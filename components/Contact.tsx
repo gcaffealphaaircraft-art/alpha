@@ -29,7 +29,8 @@ export default function ContactPage() {
       const provider =
         isRecord(providerResult) &&
         (providerResult.provider === "formsubmit" ||
-          providerResult.provider === "resend")
+          providerResult.provider === "resend" ||
+          providerResult.provider === "smtp")
           ? providerResult.provider
           : null;
 

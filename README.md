@@ -22,9 +22,18 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Contact form email
 
-If Resend is not configured, the contact form submits directly from the browser to FormSubmit's AJAX endpoint. The first submission may require the recipient to activate the address using a confirmation email from FormSubmit. Messages are sent to `info@alphaircraft.com`, with copies to `intsales@alphaaircraft.com`, `gcaffe.abhishek@gmail.com`, and `gcaffe.shashank@gmail.com`.
+The contact form sends messages to `info@alphaircraft.com`, with copies to `intsales@alphaaircraft.com`, `gcaffe.abhishek@gmail.com`, and `gcaffe.shashank@gmail.com`. Configure SMTP to send through your mail provider:
 
-To use Resend instead, configure both server-side environment variables:
+```text
+SMTP_HOST=your-provider-smtp-host
+SMTP_PORT=465
+SMTP_USER=your-mailbox-username
+SMTP_PASS=your-mailbox-password
+SMTP_FROM_EMAIL=your-verified-sender@example.com
+SMTP_SECURE=true
+```
+
+`SMTP_SECURE` is optional and defaults to `true` on port 465. Keep credentials server-side and never commit them. Alternatively, configure both Resend variables:
 
 ```text
 RESEND_API_KEY=your_resend_api_key

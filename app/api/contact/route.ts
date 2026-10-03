@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 const RECIPIENT = "info@alphaircraft.com";
 const CC_RECIPIENTS = [
@@ -14,19 +15,43 @@ type ContactSubmission = {
   message: string;
 };
 
+type EmailProvider = "formsubmit" | "resend" | "smtp";
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
 
-function getEmailProvider() {
+function getEmailProvider(): EmailProvider | null {
   const hasApiKey = Boolean(process.env.RESEND_API_KEY);
   const hasFromAddress = Boolean(process.env.RESEND_FROM_EMAIL);
+  const hasSmtpSettings = [
+    process.env.SMTP_HOST,
+    process.env.SMTP_PORT,
+    process.env.SMTP_USER,
+    process.env.SMTP_PASS,
+    process.env.SMTP_FROM_EMAIL,
+  ].some(Boolean);
+  const hasCompleteSmtpSettings = [
+    process.env.SMTP_HOST,
+    process.env.SMTP_PORT,
+    process.env.SMTP_USER,
+    process.env.SMTP_PASS,
+    process.env.SMTP_FROM_EMAIL,
+  ].every(Boolean);
 
-  if (hasApiKey !== hasFromAddress) {
-    return null;
+  if (hasApiKey && hasFromAddress) {
+    return "resend";
   }
 
-  return hasApiKey ? "resend" : "formsubmit";
+  if (hasCompleteSmtpSettings) {
+    return "smtp";
+  }
+
+  return hasApiKey ||
+    hasFromAddress ||
+    hasSmtpSettings
+    ? null
+    : "formsubmit";
 }
 
 export const dynamic = "force-dynamic";
@@ -37,7 +62,7 @@ export async function GET() {
     return NextResponse.json(
       {
         error:
-          "Resend is only partially configured. Set both RESEND_API_KEY and RESEND_FROM_EMAIL, or remove both to use the default email service.",
+          "Email settings are incomplete. Set all SMTP settings or both Resend settings.",
       },
       { status: 503 },
     );
@@ -88,23 +113,80 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please provide valid contact details." }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL;
+  const provider = getEmailProvider();
 
-  if (!apiKey && !from) {
+  if (!provider) {
+    return NextResponse.json(
+      { error: "Email settings are incomplete. Set all SMTP settings or both Resend settings." },
+      { status: 503 },
+    );
+  }
+
+  if (provider === "formsubmit") {
     return NextResponse.json(
       { error: "Submit through the configured contact form provider." },
       { status: 503 },
     );
   }
 
+  if (provider === "smtp") {
+    const host = process.env.SMTP_HOST;
+    const port = Number(process.env.SMTP_PORT);
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    const from = process.env.SMTP_FROM_EMAIL;
+
+    if (!Number.isInteger(port) || port < 1 || port > 65535) {
+      return NextResponse.json(
+        { error: "SMTP_PORT must be a valid port number." },
+        { status: 503 },
+      );
+    }
+
+    try {
+      const transporter = nodemailer.createTransport({
+        host,
+        port,
+        secure:
+          process.env.SMTP_SECURE === undefined
+            ? port === 465
+            : process.env.SMTP_SECURE.toLowerCase() === "true",
+        auth: { user, pass },
+      });
+
+      await transporter.sendMail({
+        from,
+        to: RECIPIENT,
+        cc: CC_RECIPIENTS,
+        replyTo: submission.email,
+        subject: "New contact form message",
+        text: [
+          `Name: ${submission.name}`,
+          `Email: ${submission.email}`,
+          `Phone: ${submission.phone || "Not provided"}`,
+          "",
+          "Message:",
+          submission.message,
+        ].join("\n"),
+      });
+    } catch (error) {
+      console.error("SMTP contact email delivery failed:", error);
+      return NextResponse.json(
+        { error: "Unable to send your message right now. Please try again." },
+        { status: 502 },
+      );
+    }
+
+    return NextResponse.json({ success: true, provider: "smtp" });
+  }
+
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM_EMAIL;
+
   if (!apiKey || !from) {
-    console.error("Resend requires both RESEND_API_KEY and RESEND_FROM_EMAIL.");
+    console.error("Resend settings were incomplete while sending the contact email.");
     return NextResponse.json(
-      {
-        error:
-          "Resend is only partially configured. Set both RESEND_API_KEY and RESEND_FROM_EMAIL, or remove both to use the default email service.",
-      },
+      { error: "Resend email settings are incomplete." },
       { status: 503 },
     );
   }
