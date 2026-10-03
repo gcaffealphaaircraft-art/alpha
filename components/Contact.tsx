@@ -3,17 +3,84 @@
 import React, { useState } from "react";
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "idle" | "submitting" | "success" | "formsubmit-success" | "email-client" | "error"
+  >("idle");
+  const [submissionError, setSubmissionError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmissionStatus("submitting");
+    setSubmissionError("");
 
-    setSubmitted(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-    setTimeout(() => {
-      setSubmitted(false);
-      e.currentTarget.reset();
-    }, 2500);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          message: formData.get("message"),
+        }),
+      });
+
+      const result: unknown = await response.json().catch(() => null);
+      if (response.status === 503) {
+        const subject = "Contact form message";
+        const body = [
+          `Name: ${formData.get("name")}`,
+          `Email: ${formData.get("email")}`,
+          `Phone: ${formData.get("phone") || "Not provided"}`,
+          "",
+          "Message:",
+          String(formData.get("message") ?? ""),
+        ].join("\n");
+        const query = new URLSearchParams({
+          cc: "intsales@alphaaircraft.com,gcaffe.abhishek@gmail.com",
+          subject,
+          body,
+        });
+
+        window.location.href = `mailto:info@alphaircraft.com?${query.toString()}`;
+        setSubmissionStatus("email-client");
+        return;
+      }
+
+      if (!response.ok) {
+        const errorMessage =
+          typeof result === "object" &&
+          result !== null &&
+          "error" in result &&
+          typeof result.error === "string"
+            ? result.error
+            : "Unable to send your message. Please try again.";
+        throw new Error(errorMessage);
+      }
+
+      form.reset();
+      const provider =
+        typeof result === "object" &&
+        result !== null &&
+        "provider" in result &&
+        result.provider === "formsubmit"
+          ? "formsubmit"
+          : "resend";
+      setSubmissionStatus(
+        provider === "formsubmit" ? "formsubmit-success" : "success",
+      );
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
+      setSubmissionError(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your message. Please try again.",
+      );
+      setSubmissionStatus("error");
+    }
   };
 
   return (
@@ -284,7 +351,15 @@ export default function ContactPage() {
 
             <div className="contact-form-right">
 
-              <form onSubmit={handleSubmit}>
+              <form
+                onSubmit={handleSubmit}
+                onChange={() => {
+                  if (submissionStatus !== "submitting") {
+                    setSubmissionStatus("idle");
+                    setSubmissionError("");
+                  }
+                }}
+              >
 
                 {/* NAME */}
 
@@ -364,23 +439,61 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   className={`contact-submit-btn ${
-                    submitted
+                    submissionStatus === "success" ||
+                    submissionStatus === "formsubmit-success"
                       ? "contact-submit-success"
                       : ""
                   }`}
+                  disabled={submissionStatus === "submitting"}
                 >
 
                   <span className="contact-button-icon">
-                    {submitted ? "✓" : "➤"}
+                    {submissionStatus === "success" ||
+                    submissionStatus === "formsubmit-success"
+                      ? "✓"
+                      : submissionStatus === "email-client"
+                        ? "✉"
+                        : "➤"}
                   </span>
 
                   <span>
-                    {submitted
-                      ? "MESSAGE SENT"
-                      : "LET'S FLY"}
+                    {submissionStatus === "submitting"
+                      ? "SENDING..."
+                      : submissionStatus === "success"
+                        ? "MESSAGE SENT"
+                        : submissionStatus === "formsubmit-success"
+                          ? "MESSAGE SUBMITTED"
+                        : submissionStatus === "email-client"
+                          ? "OPEN EMAIL APP"
+                        : "LET'S FLY"}
                   </span>
 
                 </button>
+
+                {submissionStatus === "error" && (
+                  <p role="alert">
+                    {submissionError}
+                  </p>
+                )}
+
+                {submissionStatus === "success" && (
+                  <p role="status">
+                    Thank you. Your message was sent.
+                  </p>
+                )}
+
+                {submissionStatus === "formsubmit-success" && (
+                  <p role="status">
+                    Your message was submitted. For the first submission, the recipient may need to activate the email address with FormSubmit.
+                  </p>
+                )}
+
+                {submissionStatus === "email-client" && (
+                  <p role="status">
+                    Your email app should open with your message and recipients.
+                    Press Send in the email app to submit it.
+                  </p>
+                )}
 
               </form>
 

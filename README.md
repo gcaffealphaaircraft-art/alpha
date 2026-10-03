@@ -20,6 +20,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Contact form email
+
+If Resend is not configured, the contact form submits through FormSubmit. The first submission may require the recipient to activate the address using a confirmation email from FormSubmit. Messages are sent to `info@alphaircraft.com`, with copies to `intsales@alphaaircraft.com` and `gcaffe.abhishek@gmail.com`.
+
+To use Resend instead, configure both server-side environment variables:
+
+```text
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM_EMAIL=Alpha Aircraft <your-verified-sender@example.com>
+```
+
+Verify the sender domain or address in Resend.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
