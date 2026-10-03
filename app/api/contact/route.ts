@@ -17,6 +17,34 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
 
+function getEmailProvider() {
+  const hasApiKey = Boolean(process.env.RESEND_API_KEY);
+  const hasFromAddress = Boolean(process.env.RESEND_FROM_EMAIL);
+
+  if (hasApiKey !== hasFromAddress) {
+    return null;
+  }
+
+  return hasApiKey ? "resend" : "formsubmit";
+}
+
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  const provider = getEmailProvider();
+  if (!provider) {
+    return NextResponse.json(
+      {
+        error:
+          "Resend is only partially configured. Set both RESEND_API_KEY and RESEND_FROM_EMAIL, or remove both to use the default email service.",
+      },
+      { status: 503 },
+    );
+  }
+
+  return NextResponse.json({ provider });
+}
+
 export async function POST(request: Request) {
   let body: unknown;
 
@@ -63,72 +91,10 @@ export async function POST(request: Request) {
   const from = process.env.RESEND_FROM_EMAIL;
 
   if (!apiKey && !from) {
-    let formSubmitResponse: Response;
-    try {
-      formSubmitResponse = await fetch(
-        `https://formsubmit.co/ajax/${RECIPIENT}`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: submission.name,
-            email: submission.email,
-            phone: submission.phone || "Not provided",
-            message: submission.message,
-            _replyto: submission.email,
-            _subject: "New contact form message",
-            _cc: CC_RECIPIENTS.join(","),
-          }),
-        },
-      );
-    } catch (error) {
-      console.error("Unable to reach the contact email service:", error);
-      return NextResponse.json(
-        { error: "Unable to send your message right now. Please try again." },
-        { status: 502 },
-      );
-    }
-
-    if (!formSubmitResponse.ok) {
-      console.error(
-        "Contact email service rejected the submission:",
-        formSubmitResponse.status,
-      );
-      return NextResponse.json(
-        { error: "Unable to send your message right now. Please try again." },
-        { status: 502 },
-      );
-    }
-
-    let formSubmitResult: unknown;
-    try {
-      formSubmitResult = await formSubmitResponse.json();
-    } catch (error) {
-      console.error("Contact email service returned an invalid response:", error);
-      return NextResponse.json(
-        { error: "Unable to confirm your message submission. Please try again." },
-        { status: 502 },
-      );
-    }
-
-    if (
-      !isRecord(formSubmitResult) ||
-      !("success" in formSubmitResult) ||
-      (formSubmitResult.success !== true &&
-        (typeof formSubmitResult.success !== "string" ||
-          !formSubmitResult.success))
-    ) {
-      console.error("Contact email service did not confirm the submission.");
-      return NextResponse.json(
-        { error: "Unable to confirm your message submission. Please try again." },
-        { status: 502 },
-      );
-    }
-
-    return NextResponse.json({ success: true, provider: "formsubmit" });
+    return NextResponse.json(
+      { error: "Submit through the configured contact form provider." },
+      { status: 503 },
+    );
   }
 
   if (!apiKey || !from) {

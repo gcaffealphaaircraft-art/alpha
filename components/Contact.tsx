@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 export default function ContactPage() {
   const [submissionStatus, setSubmissionStatus] = useState<
-    "idle" | "submitting" | "success" | "formsubmit-success" | "email-client" | "error"
+    "idle" | "submitting" | "success" | "formsubmit-success" | "error"
   >("idle");
   const [submissionError, setSubmissionError] = useState("");
 
@@ -17,58 +17,81 @@ export default function ContactPage() {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          message: formData.get("message"),
-        }),
+      const providerResponse = await fetch("/api/contact", {
+        cache: "no-store",
       });
+      const providerResult: unknown = await providerResponse.json().catch(() => null);
 
-      const result: unknown = await response.json().catch(() => null);
-      if (response.status === 503) {
-        const subject = "Contact form message";
-        const body = [
-          `Name: ${formData.get("name")}`,
-          `Email: ${formData.get("email")}`,
-          `Phone: ${formData.get("phone") || "Not provided"}`,
-          "",
-          "Message:",
-          String(formData.get("message") ?? ""),
-        ].join("\n");
-        const query = new URLSearchParams({
-          cc: "intsales@alphaaircraft.com,gcaffe.abhishek@gmail.com",
-          subject,
-          body,
-        });
-
-        window.location.href = `mailto:info@alphaircraft.com?${query.toString()}`;
-        setSubmissionStatus("email-client");
-        return;
+      if (!providerResponse.ok) {
+        throw new Error(getResponseError(providerResult));
       }
 
-      if (!response.ok) {
-        const errorMessage =
-          typeof result === "object" &&
-          result !== null &&
-          "error" in result &&
-          typeof result.error === "string"
-            ? result.error
-            : "Unable to send your message. Please try again.";
-        throw new Error(errorMessage);
+      const provider =
+        isRecord(providerResult) &&
+        (providerResult.provider === "formsubmit" ||
+          providerResult.provider === "resend")
+          ? providerResult.provider
+          : null;
+
+      if (!provider) {
+        throw new Error("Unable to determine the contact email service.");
+      }
+
+      let result: unknown;
+      if (provider === "formsubmit") {
+        const response = await fetch(
+          "https://formsubmit.co/ajax/info@alphaircraft.com",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: formData.get("name"),
+              email: formData.get("email"),
+              phone: formData.get("phone") || "Not provided",
+              message: formData.get("message"),
+              _replyto: formData.get("email"),
+              _subject: "New contact form message",
+              _cc: "intsales@alphaaircraft.com,gcaffe.abhishek@gmail.com",
+            }),
+          },
+        );
+
+        result = await response.json().catch(() => null);
+        if (!response.ok || !isFormSubmitSuccess(result)) {
+          throw new Error(
+            getResponseError(
+              result,
+              `Email provider returned HTTP ${response.status}.`,
+            ),
+          );
+        }
+      } else {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.get("name"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            message: formData.get("message"),
+          }),
+        });
+
+        result = await response.json().catch(() => null);
+        if (!response.ok) {
+          throw new Error(
+            getResponseError(
+              result,
+              `Contact API returned HTTP ${response.status}.`,
+            ),
+          );
+        }
       }
 
       form.reset();
-      const provider =
-        typeof result === "object" &&
-        result !== null &&
-        "provider" in result &&
-        result.provider === "formsubmit"
-          ? "formsubmit"
-          : "resend";
       setSubmissionStatus(
         provider === "formsubmit" ? "formsubmit-success" : "success",
       );
@@ -451,9 +474,7 @@ export default function ContactPage() {
                     {submissionStatus === "success" ||
                     submissionStatus === "formsubmit-success"
                       ? "✓"
-                      : submissionStatus === "email-client"
-                        ? "✉"
-                        : "➤"}
+                      : "➤"}
                   </span>
 
                   <span>
@@ -463,9 +484,7 @@ export default function ContactPage() {
                         ? "MESSAGE SENT"
                         : submissionStatus === "formsubmit-success"
                           ? "MESSAGE SUBMITTED"
-                        : submissionStatus === "email-client"
-                          ? "OPEN EMAIL APP"
-                        : "LET'S FLY"}
+                          : "LET'S FLY"}
                   </span>
 
                 </button>
@@ -485,13 +504,6 @@ export default function ContactPage() {
                 {submissionStatus === "formsubmit-success" && (
                   <p role="status">
                     Your message was submitted. For the first submission, the recipient may need to activate the email address with FormSubmit.
-                  </p>
-                )}
-
-                {submissionStatus === "email-client" && (
-                  <p role="status">
-                    Your email app should open with your message and recipients.
-                    Press Send in the email app to submit it.
                   </p>
                 )}
 
@@ -623,4 +635,37 @@ export default function ContactPage() {
 
     </main>
   );
+}
+
+function getResponseError(result: unknown, fallback?: string) {
+  if (isRecord(result)) {
+    for (const field of ["error", "message"] as const) {
+      if (typeof result[field] === "string") {
+        const message = result[field].trim();
+        if (message && message.toLowerCase() !== "success") {
+          return message.slice(0, 300);
+        }
+      }
+    }
+  }
+
+  return fallback ?? "Unable to send your message right now. Please try again.";
+}
+
+function isFormSubmitSuccess(result: unknown) {
+  if (!isRecord(result)) {
+    return false;
+  }
+
+  const success = result.success;
+  return (
+    success === true ||
+    (typeof success === "string" &&
+      Boolean(success.trim()) &&
+      !/^(false|error)\b/i.test(success.trim()))
+  );
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
 }
