@@ -15,7 +15,7 @@ type ContactSubmission = {
   message: string;
 };
 
-type EmailProvider = "formsubmit" | "resend" | "smtp";
+type EmailProvider = "resend" | "smtp";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -24,13 +24,6 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function getEmailProvider(): EmailProvider | null {
   const hasApiKey = Boolean(process.env.RESEND_API_KEY);
   const hasFromAddress = Boolean(process.env.RESEND_FROM_EMAIL);
-  const hasSmtpSettings = [
-    process.env.SMTP_HOST,
-    process.env.SMTP_PORT,
-    process.env.SMTP_USER,
-    process.env.SMTP_PASS,
-    process.env.SMTP_FROM_EMAIL,
-  ].some(Boolean);
   const hasCompleteSmtpSettings = [
     process.env.SMTP_HOST,
     process.env.SMTP_PORT,
@@ -47,11 +40,7 @@ function getEmailProvider(): EmailProvider | null {
     return "smtp";
   }
 
-  return hasApiKey ||
-    hasFromAddress ||
-    hasSmtpSettings
-    ? null
-    : "formsubmit";
+  return null;
 }
 
 export const dynamic = "force-dynamic";
@@ -62,7 +51,7 @@ export async function GET() {
     return NextResponse.json(
       {
         error:
-          "Email settings are incomplete. Set all SMTP settings or both Resend settings.",
+          "Contact email is not configured. Set all SMTP settings or both Resend settings in the hosting environment.",
       },
       { status: 503 },
     );
@@ -117,14 +106,10 @@ export async function POST(request: Request) {
 
   if (!provider) {
     return NextResponse.json(
-      { error: "Email settings are incomplete. Set all SMTP settings or both Resend settings." },
-      { status: 503 },
-    );
-  }
-
-  if (provider === "formsubmit") {
-    return NextResponse.json(
-      { error: "Submit through the configured contact form provider." },
+      {
+        error:
+          "Contact email is not configured. Set all SMTP settings or both Resend settings in the hosting environment.",
+      },
       { status: 503 },
     );
   }

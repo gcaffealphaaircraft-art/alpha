@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 export default function ContactPage() {
   const [submissionStatus, setSubmissionStatus] = useState<
-    "idle" | "submitting" | "success" | "formsubmit-success" | "error"
+    "idle" | "submitting" | "success" | "error"
   >("idle");
   const [submissionError, setSubmissionError] = useState("");
 
@@ -28,8 +28,7 @@ export default function ContactPage() {
 
       const provider =
         isRecord(providerResult) &&
-        (providerResult.provider === "formsubmit" ||
-          providerResult.provider === "resend" ||
+        (providerResult.provider === "resend" ||
           providerResult.provider === "smtp")
           ? providerResult.provider
           : null;
@@ -38,64 +37,29 @@ export default function ContactPage() {
         throw new Error("Unable to determine the contact email service.");
       }
 
-      let result: unknown;
-      if (provider === "formsubmit") {
-        const response = await fetch(
-          "https://formsubmit.co/ajax/info@alphaircraft.com",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: formData.get("name"),
-              email: formData.get("email"),
-              phone: formData.get("phone") || "Not provided",
-              message: formData.get("message"),
-              _replyto: formData.get("email"),
-              _subject: "New contact form message",
-              _cc: "intsales@alphaaircraft.com,gcaffe.abhishek@gmail.com,gcaffe.shashank@gmail.com",
-            }),
-          },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          message: formData.get("message"),
+        }),
+      });
+
+      const result: unknown = await response.json().catch(() => null);
+      if (!response.ok) {
+        throw new Error(
+          getResponseError(
+            result,
+            `Contact API returned HTTP ${response.status}.`,
+          ),
         );
-
-        result = await response.json().catch(() => null);
-        if (!response.ok || !isFormSubmitSuccess(result)) {
-          throw new Error(
-            getResponseError(
-              result,
-              `Email provider returned HTTP ${response.status}.`,
-            ),
-          );
-        }
-      } else {
-        const response = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.get("name"),
-            email: formData.get("email"),
-            phone: formData.get("phone"),
-            message: formData.get("message"),
-          }),
-        });
-
-        result = await response.json().catch(() => null);
-        if (!response.ok) {
-          throw new Error(
-            getResponseError(
-              result,
-              `Contact API returned HTTP ${response.status}.`,
-            ),
-          );
-        }
       }
 
       form.reset();
-      setSubmissionStatus(
-        provider === "formsubmit" ? "formsubmit-success" : "success",
-      );
+      setSubmissionStatus("success");
     } catch (error) {
       console.error("Contact form submission failed:", error);
       setSubmissionError(
@@ -463,8 +427,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   className={`contact-submit-btn ${
-                    submissionStatus === "success" ||
-                    submissionStatus === "formsubmit-success"
+                    submissionStatus === "success"
                       ? "contact-submit-success"
                       : ""
                   }`}
@@ -472,10 +435,7 @@ export default function ContactPage() {
                 >
 
                   <span className="contact-button-icon">
-                    {submissionStatus === "success" ||
-                    submissionStatus === "formsubmit-success"
-                      ? "✓"
-                      : "➤"}
+                    {submissionStatus === "success" ? "✓" : "➤"}
                   </span>
 
                   <span>
@@ -483,9 +443,7 @@ export default function ContactPage() {
                       ? "SENDING..."
                       : submissionStatus === "success"
                         ? "MESSAGE SENT"
-                        : submissionStatus === "formsubmit-success"
-                          ? "MESSAGE SUBMITTED"
-                          : "LET'S FLY"}
+                        : "LET'S FLY"}
                   </span>
 
                 </button>
@@ -499,12 +457,6 @@ export default function ContactPage() {
                 {submissionStatus === "success" && (
                   <p role="status">
                     Thank you. Your message was sent.
-                  </p>
-                )}
-
-                {submissionStatus === "formsubmit-success" && (
-                  <p role="status">
-                    Your message was submitted. For the first submission, the recipient may need to activate the email address with FormSubmit.
                   </p>
                 )}
 
@@ -651,20 +603,6 @@ function getResponseError(result: unknown, fallback?: string) {
   }
 
   return fallback ?? "Unable to send your message right now. Please try again.";
-}
-
-function isFormSubmitSuccess(result: unknown) {
-  if (!isRecord(result)) {
-    return false;
-  }
-
-  const success = result.success;
-  return (
-    success === true ||
-    (typeof success === "string" &&
-      Boolean(success.trim()) &&
-      !/^(false|error)\b/i.test(success.trim()))
-  );
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
