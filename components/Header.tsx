@@ -10,31 +10,31 @@ import { useEffect, useState } from "react";
 const serviceItems = [
  {
     name: "A.P.U. Overhaul & Repairs",
-    href: "https://alpha-hazel-five.vercel.app/a-p-u-overhaul-repairs",
+    href: "/a-p-u-overhaul-repairs",
   },
    {
     name: "Fuel Systems & Fuel Flow Transmitter",
-    href: "https://alpha-hazel-five.vercel.app/fuel-systems-fuel-flow-transmitter",
+    href: "/fuel-systems-fuel-flow-transmitter",
   },
   
   {
     name: "Plasma Spray & Professional Welding",
-    href: "https://alpha-hazel-five.vercel.app/plasma-spray-professional-welding",
+    href: "/plasma-spray-professional-welding",
   },
   {
     name: "Hydraulic Systems",
-    href: "https://alpha-hazel-five.vercel.app/hydraulic-systems",
+    href: "/hydraulic-systems",
   },
   {
     name: "C.S.D. & Pneumatic Systems",
-    href: "https://alpha-hazel-five.vercel.app/c-s-d-pneumatic-systems",
+    href: "/c-s-d-pneumatic-systems",
   },
   {
     name: "Aircraft Scanning",
-    href: "https://alpha-hazel-five.vercel.app/aircraft-scanning",
+    href: "/aircraft-scanning",
   },{
     name: "Borescope Services",
-    href: "https://alpha-hazel-five.vercel.app/borescope-services",
+    href: "/borescope-services",
   },
 
 ];
