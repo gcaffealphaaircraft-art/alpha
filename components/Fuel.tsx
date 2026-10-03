@@ -158,7 +158,7 @@ export default function HomePage() {
 
             <div className="heroButtons">
 <a
-              href="https://alpha-hazel-five.vercel.app/contact"
+              href="/contact"
               className="aboutButton"
             >
               CONTACT US
@@ -477,7 +477,7 @@ export default function HomePage() {
             {/* ABOUT BUTTON */}
 
             <a
-              href="#contact"
+              href="/about"
               className="aboutButton"
             >
               ABOUT US

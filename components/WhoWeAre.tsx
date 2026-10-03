@@ -206,9 +206,9 @@ export default function WhoWeAre() {
           <div className="hero-right">
 
             <p className="hero-copy">
-             The company performs repair and overhaul services on a wide range of aircraft parts, including generators, hydraulic and pneumatic units, CSD&apos;s, and fuel system related parts, among others. An important and growing part of the company&apos;s business is dedicated to APU repair and overhaul services, which the company began in 2009. Currently the company specializes in the GTCP85, GTCP36, TSCP700 and APS2000 series APU&apos;s, with an extensive parts inventory for all variants of these models. Alpha performs field service and training for its APU clients. The company also has APU&apos;s for sale, exchange and lease on short notice.
+             Alpha Aircraft Systems performs repair and overhaul services on a wide range of aircraft parts, including generators, hydraulic and pneumatic units, CSD&apos;s, and fuel system related parts, among others. An important and growing part of the company&apos;s business is dedicated to APU repair and overhaul services, which the company began in 2009. Currently the company specializes in the GTCP85, GTCP36, TSCP700 and APS2000 series APU&apos;s, with an extensive parts inventory for all variants of these models. Alpha performs field service and training for its APU clients. The company also has APU&apos;s for sale, exchange and lease on short notice.
          <br /><br />  <a
-            href="https://alpha-hazel-five.vercel.app/fuel-systems-fuel-flow-transmitter"
+            href="/fuel-systems-fuel-flow-transmitter"
             className="hero-button hero-button-primary"
           >
 

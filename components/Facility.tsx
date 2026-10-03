@@ -82,7 +82,7 @@ const facilities = [
       "Organized inventory management ensures fast turnaround times and dependable parts availability.",
   },
   {
-    image: "/Purchase and Sales (1).JPG",
+    image: "/Purchase and Sales.webp",
     title: "Procurement & Customer Support Operations",
     description:
       "A specialized team ensures seamless sourcing, order management, and responsive customer coordination.",

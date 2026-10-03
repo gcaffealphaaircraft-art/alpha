@@ -37,7 +37,7 @@ const cardsData: CardData[] = [
       "Specialization is all types of APU overhaul and repair",
     cta: "VIEW SERVICE",
     link:
-      "https://alpha-hazel-five.vercel.app/a-p-u-overhaul-repairs",
+      "/a-p-u-overhaul-repairs",
     image: "/1-APU.jpg",
   },
 
@@ -47,7 +47,7 @@ const cardsData: CardData[] = [
       "Reliable and durable overhauling",
     cta: "VIEW SERVICE",
     link:
-      "https://alpha-hazel-five.vercel.app/fuel-systems-fuel-flow-transmitter",
+      "/fuel-systems-fuel-flow-transmitter",
     image: "/2-Fuel.jpg",
   },
 
@@ -57,7 +57,7 @@ const cardsData: CardData[] = [
       "Cost-effective high-tech solutions",
     cta: "VIEW SERVICE",
     link:
-      "https://alpha-hazel-five.vercel.app/plasma-spray-professional-welding",
+      "/plasma-spray-professional-welding",
     image: "/3-Plasma.jpg",
   },
 
@@ -67,7 +67,7 @@ const cardsData: CardData[] = [
       "Long-lasting and reliable component overhaul",
     cta: "VIEW SERVICE",
     link:
-      "https://alpha-hazel-five.vercel.app/hydraulic-systems",
+      "/hydraulic-systems",
     image: "/4-Hydraulic.jpg",
   },
 
@@ -77,7 +77,7 @@ const cardsData: CardData[] = [
       "Dealt with precision and accuracy",
     cta: "VIEW SERVICE",
     link:
-      "https://alpha-hazel-five.vercel.app/c-s-d-pneumatic-systems",
+      "/c-s-d-pneumatic-systems",
     image: "/5-CSD.jpg",
   },
 
@@ -87,7 +87,7 @@ const cardsData: CardData[] = [
       "CNN 3D scan measurements with FARO instrument",
     cta: "VIEW SERVICE",
     link:
-      "https://alpha-hazel-five.vercel.app/aircraft-scanning",
+      "/aircraft-scanning",
     image: "/6-Aircraft-Scanning.jpg",
   },
 
@@ -97,7 +97,7 @@ const cardsData: CardData[] = [
       "Optimised instrument to take accurate measurements",
     cta: "VIEW SERVICE",
     link:
-      "https://alpha-hazel-five.vercel.app/borescope-services",
+      "/borescope-services",
     image: "/7-Borescope.jpg",
   },
 ];

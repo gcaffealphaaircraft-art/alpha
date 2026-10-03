@@ -421,7 +421,7 @@ export default function Hero() {
           {/* ALPHA */}
 
           
-
+<div className="exhibition-label">Alpha Aircraft Systems</div>
 
           {/* MAIN HEADING */}
 
@@ -478,7 +478,7 @@ export default function Hero() {
         <div className="hero-cta">
 
           <a
-            href="https://alpha-hazel-five.vercel.app/a-p-u-overhaul-repairs"
+            href="/a-p-u-overhaul-repairs"
             className="hero-button hero-button-primary"
           >
 
@@ -495,7 +495,7 @@ export default function Hero() {
 
 
           <a
-            href="https://alpha-hazel-five.vercel.app/contact"
+            href="/contact"
             className="hero-button hero-button-outline"
           >
 
