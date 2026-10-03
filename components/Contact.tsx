@@ -102,7 +102,7 @@ export default function ContactPage() {
                 <h3>USA</h3>
 
                 <p>
-                  Alpha Aircraft Systems, 4265E,
+                  Alpha Aircraft Systems, 4265E
                   <br />
                   10LN, Hialeah, Florida, 33013
                 </p>
