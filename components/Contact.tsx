@@ -54,7 +54,7 @@ export default function ContactPage() {
               message: formData.get("message"),
               _replyto: formData.get("email"),
               _subject: "New contact form message",
-              _cc: "intsales@alphaaircraft.com,gcaffe.abhishek@gmail.com",
+              _cc: "intsales@alphaaircraft.com,gcaffe.abhishek@gmail.com,gcaffe.shashank@gmail.com",
             }),
           },
         );

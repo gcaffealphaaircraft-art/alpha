@@ -4,6 +4,7 @@ const RECIPIENT = "info@alphaircraft.com";
 const CC_RECIPIENTS = [
   "intsales@alphaaircraft.com",
   "gcaffe.abhishek@gmail.com",
+  "gcaffe.shashank@gmail.com",
 ];
 
 type ContactSubmission = {
