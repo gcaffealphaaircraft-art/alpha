@@ -42,7 +42,36 @@ const exhibitionData: ExhibitionYear = {
   ======================================================= */
 
   2026: [
+{
+      title: "PB EXPO",
+      image:
+        "/Alpha Aircraft Systems at PB Expo 2026 (2).jpeg",
+      location: "Miami Beach Convention Center",
+      address:
+        "Miami Beach Convention Center",
+      date: "March 11–12, 2026",
+      description:
+        "PB Expo 2026 brought together the aviation community to explore the technologies and ideas shaping the future of the industry.",
 
+      ctaUrl:
+        "/pbexpo",
+      ctaText: "EXPLORE",
+    },
+    {
+      title: "MRO South East Asia",
+      image:
+        "/MRO South East_Asia.jpeg",
+      location: "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
+      address:
+        "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
+      date: "May 13–14, 2026",
+      description:
+        "MRO Southeast Asia in Kuala Lumpur gave Alpha Aircraft Systems another valuable opportunity to connect with the region’s aviation and MRO community.",
+
+      ctaUrl:
+        "/exhibition-mro-south-east-asia",
+      ctaText: "EXPLORE",
+    },
     {
       title: "MRO XPO India",
       image:
