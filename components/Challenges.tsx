@@ -27,6 +27,39 @@ gsap.registerPlugin(ScrollTrigger);
 ========================================================= */
 
 const exhibitions = [
+  
+  {
+    name: "MRO Asia Pacific",
+    location: "Singapore EXPO, Singapore",
+    date: "September 22–24, 2026",
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
+    cta: "EXPLORE",
+    link: "/mro-xpo-india",
+  },
+  {
+    name: "MRO Beer",
+    location: "Istanbul Lutfi Kirdar International Convention and Exhibition Center",
+    date: "June 17–18, 2026",
+    image: "/Alpha Aircraft Systems at MRO Beer 2026.jpeg",
+    cta: "EXPLORE",
+    link: "/mro-beer",
+  },
+  {
+    name: "MRO South East Asia",
+    location: "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
+    date: "May 13–14, 2026",
+    image: "/MRO South East_Asia.jpeg",
+    cta: "EXPLORE",
+    link: "/exhibition-mro-south-east-asia",
+  },
+  {
+    name: "PB Expo",
+    location: "Miami Beach Convention Center",
+    date: "March 11–12, 2026",
+    image: "/Alpha Aircraft Systems at PB Expo 2026 (2).jpeg",
+    cta: "EXPLORE",
+    link: "/pbexpo",
+  },
   {
     name: "MRO XPO India",
     location: "MRO XPO India",

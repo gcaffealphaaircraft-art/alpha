@@ -42,19 +42,35 @@ const exhibitionData: ExhibitionYear = {
   ======================================================= */
 
   2026: [
-{
-      title: "PB EXPO",
-      image:
-        "/Alpha Aircraft Systems at PB Expo 2026 (2).jpeg",
-      location: "Miami Beach Convention Center",
+    {
+      title: "MRO Asia Pacific",
+      image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
+      location: "Singapore EXPO, Singapore",
       address:
-        "Miami Beach Convention Center",
-      date: "March 11–12, 2026",
+        "Singapore EXPO, Singapore",
+      date: "September 22–24, 2026",
       description:
-        "PB Expo 2026 brought together the aviation community to explore the technologies and ideas shaping the future of the industry.",
+        "The energy across the exhibition floor at MRO Asia-Pacific was exceptional. Beyond discussing the latest advancements in aircraft systems, maintenance, and fleet reliability, the highlight of our time in Singapore was reconnecting with long-time industry friends, partners, and colleagues from across the Asia-Pacific region.",
 
       ctaUrl:
-        "/pbexpo",
+        "/mro-asia-pacific",
+      ctaText: "EXPLORE",
+    },
+
+    
+    {
+      title: "MRO BEER ",
+      image:
+        "/Alpha Aircraft Systems at MRO Beer 2026.jpeg",
+      location: "Istanbul, Turkey (hosted at the Istanbul Lutfi Kirdar International Convention and Exhibition Center)",
+      address:
+        "Istanbul Lutfi Kirdar International Convention and Exhibition Center",
+      date: "June 17–18, 2026",
+      description:
+        "MRO BEER gave Alpha Aircraft Systems the opportunity to connect with the aviation and MRO community across the Baltics and Eastern Europe. More than a platform for industry discussions, the event opened doors to new conversations, new relationships and a growing network within a region with tremendous aviation potential.",
+
+      ctaUrl:
+        "/mro-beer",
       ctaText: "EXPLORE",
     },
     {
@@ -73,32 +89,18 @@ const exhibitionData: ExhibitionYear = {
       ctaText: "EXPLORE",
     },
     {
-      title: "MRO BEER ",
+      title: "PB EXPO",
       image:
-        "/Alpha Aircraft Systems at MRO Beer 2026.jpeg",
-      location: "Istanbul, Turkey (hosted at the Istanbul Lutfi Kirdar International Convention and Exhibition Center)",
+        "/Alpha Aircraft Systems at PB Expo 2026 (2).jpeg",
+      location: "Miami Beach Convention Center",
       address:
-        "Istanbul Lutfi Kirdar International Convention and Exhibition Center",
-      date: "June 17–18, 2026",
+        "Miami Beach Convention Center",
+      date: "March 11–12, 2026",
       description:
-        "MRO BEER gave Alpha Aircraft Systems the opportunity to connect with the aviation and MRO community across the Baltics and Eastern Europe. More than a platform for industry discussions, the event opened doors to new conversations, new relationships and a growing network within a region with tremendous aviation potential.",
+        "PB Expo 2026 brought together the aviation community to explore the technologies and ideas shaping the future of the industry.",
 
       ctaUrl:
-        "/mro-beer",
-      ctaText: "EXPLORE",
-    },
-    {
-      title: "MRO Asia Pacific",
-      image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
-      location: "Singapore EXPO, Singapore",
-      address:
-        "Singapore EXPO, Singapore",
-      date: "September 22–24, 2026",
-      description:
-        "The energy across the exhibition floor at MRO Asia-Pacific was exceptional. Beyond discussing the latest advancements in aircraft systems, maintenance, and fleet reliability, the highlight of our time in Singapore was reconnecting with long-time industry friends, partners, and colleagues from across the Asia-Pacific region.",
-
-      ctaUrl:
-        "/mro-asia-pacific",
+        "/pbexpo",
       ctaText: "EXPLORE",
     },
     {
