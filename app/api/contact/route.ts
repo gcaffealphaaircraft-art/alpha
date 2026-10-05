@@ -32,12 +32,12 @@ function getEmailProvider(): EmailProvider | null {
     process.env.SMTP_FROM_EMAIL,
   ].every(Boolean);
 
-  if (hasApiKey && hasFromAddress) {
-    return "resend";
-  }
-
   if (hasCompleteSmtpSettings) {
     return "smtp";
+  }
+
+  if (hasApiKey && hasFromAddress) {
+    return "resend";
   }
 
   return null;

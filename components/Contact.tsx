@@ -20,27 +20,18 @@ export default function ContactPage() {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/info@alphaircraft.com",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.get("name"),
-            email: formData.get("email"),
-            phone: formData.get("phone"),
-            message: formData.get("message"),
-
-            // FormSubmit settings
-            _subject: "New Contact Form Enquiry - Alpha Aircraft Systems",
-            _template: "table",
-            _captcha: "false",
-          }),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          message: formData.get("message"),
+        }),
+      });
 
       const result: unknown = await response.json().catch(() => null);
 
