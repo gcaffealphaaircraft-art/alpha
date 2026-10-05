@@ -56,11 +56,6 @@ export default function ContactPage() {
 
       // Show success
       setSubmissionStatus("success");
-
-      // Return button to normal after 2.5 seconds
-      setTimeout(() => {
-        setSubmissionStatus("idle");
-      }, 2500);
     } catch (error) {
       console.error("Contact form submission failed:", error);
 
@@ -471,7 +466,7 @@ export default function ContactPage() {
 
                 {submissionStatus === "success" && (
                   <p role="status">
-                    Thank you. Your message was sent.
+                    Thank you for connecting. Check inbox.
                   </p>
                 )}
 

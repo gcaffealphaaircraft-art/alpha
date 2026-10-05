@@ -7,6 +7,24 @@ const CC_RECIPIENTS = [
   "gcaffe.abhishek@gmail.com",
   "gcaffe.shashank@gmail.com",
 ];
+const ACKNOWLEDGEMENT_TEXT = [
+  "Thank you for reaching out to Alpha Aircraft Systems.",
+  "",
+  "We have successfully received your message. We will review your inquiry and connect with you very soon.",
+  "",
+  "We appreciate your interest in our aviation solutions and thank you for your patience.",
+  "",
+  "Best regards,",
+  "Team",
+  "Alpha Aircraft Systems",
+].join("\n");
+const ACKNOWLEDGEMENT_HTML = `
+  <p>Thank you for reaching out to <strong>Alpha Aircraft Systems</strong>.</p>
+  <p>We have successfully received your message. We will review your inquiry and connect with you very soon.</p>
+  <p>We appreciate your interest in our aviation solutions and thank you for your patience.</p>
+  <p>Best regards,<br /><strong>Team</strong><br /><strong>Alpha Aircraft Systems</strong></p>
+`;
+const ACKNOWLEDGEMENT_SUBJECT = "We received your message - Alpha Aircraft Systems";
 
 type ContactSubmission = {
   name: string;
@@ -154,8 +172,15 @@ export async function POST(request: Request) {
           submission.message,
         ].join("\n"),
       });
+      await transporter.sendMail({
+        from,
+        to: submission.email,
+        subject: ACKNOWLEDGEMENT_SUBJECT,
+        text: ACKNOWLEDGEMENT_TEXT,
+        html: ACKNOWLEDGEMENT_HTML,
+      });
     } catch (error) {
-      console.error("SMTP contact email delivery failed:", error);
+      console.error("SMTP contact email or acknowledgement delivery failed:", error);
       return NextResponse.json(
         { error: "Unable to send your message right now. Please try again." },
         { status: 502 },
@@ -211,6 +236,43 @@ export async function POST(request: Request) {
   if (!response.ok) {
     const errorDetails = await response.text();
     console.error("Email service rejected the contact email:", response.status, errorDetails);
+    return NextResponse.json(
+      { error: "Unable to send your message right now." },
+      { status: 502 },
+    );
+  }
+
+  let acknowledgementResponse: Response;
+  try {
+    acknowledgementResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: [submission.email],
+        subject: ACKNOWLEDGEMENT_SUBJECT,
+        text: ACKNOWLEDGEMENT_TEXT,
+        html: ACKNOWLEDGEMENT_HTML,
+      }),
+    });
+  } catch (error) {
+    console.error("Unable to send the contact acknowledgement email:", error);
+    return NextResponse.json(
+      { error: "Unable to send your message right now." },
+      { status: 502 },
+    );
+  }
+
+  if (!acknowledgementResponse.ok) {
+    const errorDetails = await acknowledgementResponse.text();
+    console.error(
+      "Email service rejected the contact acknowledgement:",
+      acknowledgementResponse.status,
+      errorDetails,
+    );
     return NextResponse.json(
       { error: "Unable to send your message right now." },
       { status: 502 },
