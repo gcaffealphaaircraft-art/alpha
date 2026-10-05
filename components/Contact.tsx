@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from "react";
@@ -6,10 +7,12 @@ export default function ContactPage() {
   const [submissionStatus, setSubmissionStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+
   const [submissionError, setSubmissionError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setSubmissionStatus("submitting");
     setSubmissionError("");
 
@@ -17,56 +20,65 @@ export default function ContactPage() {
     const formData = new FormData(form);
 
     try {
-      const providerResponse = await fetch("/api/contact", {
-        cache: "no-store",
-      });
-      const providerResult: unknown = await providerResponse.json().catch(() => null);
+      const response = await fetch(
+        "https://formsubmit.co/ajax/info@alphaircraft.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.get("name"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            message: formData.get("message"),
 
-      if (!providerResponse.ok) {
-        throw new Error(getResponseError(providerResult));
-      }
-
-      const provider =
-        isRecord(providerResult) &&
-        (providerResult.provider === "resend" ||
-          providerResult.provider === "smtp")
-          ? providerResult.provider
-          : null;
-
-      if (!provider) {
-        throw new Error("Unable to determine the contact email service.");
-      }
-
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          message: formData.get("message"),
-        }),
-      });
+            // FormSubmit settings
+            _subject: "New Contact Form Enquiry - Alpha Aircraft Systems",
+            _template: "table",
+            _captcha: "false",
+          }),
+        }
+      );
 
       const result: unknown = await response.json().catch(() => null);
+
       if (!response.ok) {
+        throw new Error(getResponseError(result));
+      }
+
+      if (
+        !isRecord(result) ||
+        result.success !== true
+      ) {
         throw new Error(
           getResponseError(
             result,
-            `Contact API returned HTTP ${response.status}.`,
-          ),
+            "Unable to send your message. Please try again."
+          )
         );
       }
 
+      // Clear form
       form.reset();
+
+      // Show success
       setSubmissionStatus("success");
+
+      // Return button to normal after 2.5 seconds
+      setTimeout(() => {
+        setSubmissionStatus("idle");
+      }, 2500);
     } catch (error) {
       console.error("Contact form submission failed:", error);
+
       setSubmissionError(
         error instanceof Error
           ? error.message
-          : "Unable to send your message. Please try again.",
+          : "Unable to send your message. Please try again."
       );
+
       setSubmissionStatus("error");
     }
   };
@@ -435,24 +447,36 @@ export default function ContactPage() {
                 >
 
                   <span className="contact-button-icon">
-                    {submissionStatus === "success" ? "✓" : "➤"}
+
+                    {submissionStatus === "success"
+                      ? "✓"
+                      : "➤"}
+
                   </span>
 
                   <span>
+
                     {submissionStatus === "submitting"
                       ? "SENDING..."
                       : submissionStatus === "success"
                         ? "MESSAGE SENT"
                         : "LET'S FLY"}
+
                   </span>
 
                 </button>
+
+
+                {/* ERROR */}
 
                 {submissionStatus === "error" && (
                   <p role="alert">
                     {submissionError}
                   </p>
                 )}
+
+
+                {/* SUCCESS */}
 
                 {submissionStatus === "success" && (
                   <p role="status">
@@ -590,21 +614,45 @@ export default function ContactPage() {
   );
 }
 
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
 function getResponseError(result: unknown, fallback?: string) {
   if (isRecord(result)) {
+
     for (const field of ["error", "message"] as const) {
+
       if (typeof result[field] === "string") {
+
         const message = result[field].trim();
-        if (message && message.toLowerCase() !== "success") {
+
+        if (
+          message &&
+          message.toLowerCase() !== "success"
+        ) {
           return message.slice(0, 300);
         }
+
       }
+
     }
+
   }
 
-  return fallback ?? "Unable to send your message right now. Please try again.";
+  return (
+    fallback ??
+    "Unable to send your message right now. Please try again."
+  );
 }
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
+
+function isRecord(
+  value: unknown
+): value is Record<string, unknown> {
+  return (
+    typeof value === "object" &&
+    value !== null
+  );
 }
