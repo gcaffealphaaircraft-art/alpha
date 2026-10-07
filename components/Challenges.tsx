@@ -27,14 +27,7 @@ gsap.registerPlugin(ScrollTrigger);
 ========================================================= */
 
 const exhibitions = [
-  {
-    name: "Aviation Africa",
-    location: "Sarit Expo Centre in Nairobi, Kenya Stand No. 59",
-    date: "September 9–10, 2026",
-    image: "/Aviation Africa5.webp",
-    cta: "EXPLORE",
-    link: "/aviation-africa",
-  },
+  
   {
     name: "MRO Asia Pacific",
     location: "Singapore EXPO, Singapore",
@@ -42,6 +35,14 @@ const exhibitions = [
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
     cta: "EXPLORE",
     link: "/mro-xpo-india",
+  },
+  {
+    name: "Aviation Africa",
+    location: "Sarit Expo Centre in Nairobi, Kenya Stand No. 59",
+    date: "September 9–10, 2026",
+    image: "/Aviation Africa5.webp",
+    cta: "EXPLORE",
+    link: "/aviation-africa",
   },
   {
     name: "MRO Beer",

@@ -42,20 +42,7 @@ const exhibitionData: ExhibitionYear = {
   ======================================================= */
 
   2026: [
-    {
-      title: "Aviation Africa",
-      image: "/Aviation Africa5.webp",
-      location: "Sarit Expo Centre in Nairobi, KenyaStand No. 59",
-      address:
-        "Sarit Expo Centre in Nairobi, KenyaStand No. 59",
-      date: "September 9–10, 2026",
-      description:
-        "Aviation AFRICA 2026 was a memorable experience for Alpha Aircraft Systems. From our Stand 59 at the Sarit Expo Centre in Nairobi, we had the opportunity to meet aviation professionals from across Africa and beyond, reconnect with old friends and build new relationships within the region’s growing aviation community.",
-
-      ctaUrl:
-        "/aviation-africa",
-      ctaText: "EXPLORE",
-    },
+    
     {
       title: "MRO Asia Pacific",
       image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
@@ -70,12 +57,25 @@ const exhibitionData: ExhibitionYear = {
         "/mro-asia-pacific",
       ctaText: "EXPLORE",
     },
+{
+      title: "Aviation Africa",
+      image: "/Aviation Africa5.webp",
+      location: "Sarit Expo Centre in Nairobi, KenyaStand No. 59",
+      address:
+        "Sarit Expo Centre in Nairobi, KenyaStand No. 59",
+      date: "September 9–10, 2026",
+      description:
+        "Aviation AFRICA 2026 was a memorable experience for Alpha Aircraft Systems. From our Stand 59 at the Sarit Expo Centre in Nairobi, we had the opportunity to meet aviation professionals from across Africa and beyond, reconnect with old friends and build new relationships within the region’s growing aviation community.",
 
+      ctaUrl:
+        "/aviation-africa",
+      ctaText: "EXPLORE",
+    },
     
     {
       title: "MRO BEER ",
       image:
-        "/Alpha Aircraft Systems at MRO Beer 2026.jpeg",
+        "/Alpha Aircraft Systems at MRO Beer 2026-Istanbul.jpeg",
       location: "Istanbul, Turkey (hosted at the Istanbul Lutfi Kirdar International Convention and Exhibition Center)",
       address:
         "Istanbul Lutfi Kirdar International Convention and Exhibition Center",
