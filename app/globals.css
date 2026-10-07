@@ -45,6 +45,55 @@ img {
   object-fit: cover;
 }
 
+.home-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 13, 28, 0.78);
+}
+
+.home-popup-dialog {
+  position: relative;
+  width: min(100%, 400px);
+  max-height: 90svh;
+  aspect-ratio: 1122 / 1408;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.home-popup-image {
+  object-fit: contain;
+}
+
+.home-popup-close {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  color: white;
+  background: rgba(8, 43, 76, 0.8);
+}
+
+.home-popup-close svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
 .site-header {
   position: fixed;
   z-index: 1000;
