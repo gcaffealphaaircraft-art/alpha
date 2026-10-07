@@ -40,7 +40,7 @@ const exhibitions = [
     name: "Aviation Africa",
     location: "Sarit Expo Centre in Nairobi, Kenya Stand No. 59",
     date: "September 9–10, 2026",
-    image: "/Aviation Africa5.webp",
+    image: "/Aviation Africa11.webp",
     cta: "EXPLORE",
     link: "/aviation-africa",
   },
