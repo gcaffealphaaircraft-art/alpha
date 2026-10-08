@@ -174,6 +174,7 @@ export async function POST(request: Request) {
       await transporter.sendMail({
         from,
         to: submission.email,
+        replyTo: RECIPIENT,
         subject: ACKNOWLEDGEMENT_SUBJECT,
         text: ACKNOWLEDGEMENT_TEXT,
         html: ACKNOWLEDGEMENT_HTML,
@@ -252,6 +253,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         from,
         to: [submission.email],
+        reply_to: RECIPIENT,
         subject: ACKNOWLEDGEMENT_SUBJECT,
         text: ACKNOWLEDGEMENT_TEXT,
         html: ACKNOWLEDGEMENT_HTML,
