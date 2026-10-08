@@ -60,9 +60,9 @@ const exhibitionData: ExhibitionYear = {
 {
       title: "Aviation Africa",
       image: "/Aviation Africa11.webp",
-      location: "Sarit Expo Centre in Nairobi, Kenya Stand No. 59",
+      location: "Sarit Expo Centre in Nairobi, Kenya",
       address:
-        "Sarit Expo Centre in Nairobi, Kenya Stand No. 59",
+        "Sarit Expo Centre in Nairobi, Kenya ",
       date: "September 9–10, 2026",
       description:
         "Aviation AFRICA 2026 was a memorable experience for Alpha Aircraft Systems. From our Stand 59 at the Sarit Expo Centre in Nairobi, we had the opportunity to meet aviation professionals from across Africa and beyond, reconnect with old friends and build new relationships within the region’s growing aviation community.",

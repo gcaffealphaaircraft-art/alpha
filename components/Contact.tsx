@@ -131,8 +131,8 @@ export default function ContactPage() {
 
                 <h3>EMAIL US</h3>
 
-                <a href="mailto:info@alphaircraft.com">
-                  info@alphaircraft.com
+                <a href="mailto:info@alphaaircraft.com">
+                  info@alphaaircraft.com
                 </a>
 
                 <div className="contact-small-line"></div>

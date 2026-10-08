@@ -22,7 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Contact form email
 
-The contact form sends messages to `info@alphaircraft.com`, with copies to `intsales@alphaaircraft.com`, `gcaffe.abhishek@gmail.com`, and `gcaffe.shashank@gmail.com`. It also sends an acknowledgement email to the address entered on the form. Configure SMTP or Resend in the hosting environment before submissions can be delivered. Complete SMTP settings use Nodemailer and take precedence when both providers are configured. SMTP configuration:
+The contact form sends messages to `info@alphaaircraft.com`, with copies to `intsales@alphaaircraft.com`, `gcaffe.abhishek@gmail.com`, and `gcaffe.shashank@gmail.com`. It also sends an acknowledgement email to the address entered on the form. Configure SMTP or Resend in the hosting environment before submissions can be delivered. Complete SMTP settings use Nodemailer and take precedence when both providers are configured. SMTP configuration:
 
 ```text
 SMTP_HOST=your-provider-smtp-host

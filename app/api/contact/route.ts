@@ -1,29 +1,28 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-const RECIPIENT = "info@alphaircraft.com";
+const RECIPIENT = "info@alphaaircraft.com";
 const CC_RECIPIENTS = [
   "intsales@alphaaircraft.com",
   "gcaffe.abhishek@gmail.com",
   "gcaffe.shashank@gmail.com",
 ];
 const ACKNOWLEDGEMENT_TEXT = [
-  "Thank you for reaching out to Alpha Aircraft Systems.",
+  "Thank you for contacting Alpha Aircraft Systems.",
   "",
-  "We have successfully received your message. We will review your inquiry and connect with you very soon.",
-  "",
-  "We appreciate your interest in our aviation solutions and thank you for your patience.",
+  "We've received your inquiry and a member of our team will be in touch soon.",
   "",
   "Best regards,",
   "Team",
   "Alpha Aircraft Systems",
 ].join("\n");
 const ACKNOWLEDGEMENT_HTML = `
-  <p>Thank you for reaching out to <strong>Alpha Aircraft Systems</strong>.</p>
-  <p>We have successfully received your message. We will review your inquiry and connect with you very soon.</p>
-  <p>We appreciate your interest in our aviation solutions and thank you for your patience.</p>
-  <p>Best regards,<br /><strong>Team</strong><br /><strong>Alpha Aircraft Systems</strong></p>
-`;
+  <p>Thank you for contacting <strong> Alpha Aircraft Systems</strong>.</p>
+  <p>We've received your inquiry and a member of our team will be in touch soon.</p>
+<p>Best regards</p>
+<p>Team</p>
+<p>Alpha Aircraft Systems</p>
+  `;
 const ACKNOWLEDGEMENT_SUBJECT = "We received your message - Alpha Aircraft Systems";
 
 type ContactSubmission = {
