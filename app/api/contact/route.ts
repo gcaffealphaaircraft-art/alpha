@@ -24,6 +24,7 @@ const ACKNOWLEDGEMENT_HTML = `
 <p>Alpha Aircraft Systems</p>
   `;
 const ACKNOWLEDGEMENT_SUBJECT = "We received your message - Alpha Aircraft Systems";
+const CONTACT_SUBJECT = "Query from Alpha Aircraft Systems Site";
 
 type ContactSubmission = {
   name: string;
@@ -90,11 +91,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, phone, message } = body;
+  const { name, email, phone, message, captchaToken } = body;
   if (
     typeof name !== "string" ||
     typeof email !== "string" ||
     typeof message !== "string" ||
+    typeof captchaToken !== "string" ||
     (phone !== undefined && typeof phone !== "string")
   ) {
     return NextResponse.json({ error: "Please provide valid contact details." }, { status: 400 });
@@ -108,6 +110,8 @@ export async function POST(request: Request) {
   };
 
   if (
+    !captchaToken ||
+    captchaToken.length > 4096 ||
     !submission.name ||
     submission.name.length > 200 ||
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submission.email) ||
@@ -128,6 +132,50 @@ export async function POST(request: Request) {
           "Contact email is not configured. Set all SMTP settings or both Resend settings in the hosting environment.",
       },
       { status: 503 },
+    );
+  }
+
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!recaptchaSecret) {
+    console.error("reCAPTCHA secret key is not configured.");
+    return NextResponse.json(
+      { error: "Contact form verification is not configured." },
+      { status: 503 },
+    );
+  }
+
+  let captchaResult: unknown;
+  try {
+    const captchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: recaptchaSecret,
+        response: captchaToken,
+      }).toString(),
+      cache: "no-store",
+    });
+    if (!captchaResponse.ok) {
+      console.error("reCAPTCHA verification service returned:", captchaResponse.status);
+      return NextResponse.json(
+        { error: "Unable to verify reCAPTCHA right now. Please try again." },
+        { status: 502 },
+      );
+    }
+    captchaResult = await captchaResponse.json();
+  } catch (error) {
+    console.error("Unable to verify contact form reCAPTCHA:", error);
+    return NextResponse.json(
+      { error: "Unable to verify reCAPTCHA right now. Please try again." },
+      { status: 502 },
+    );
+  }
+
+  if (!isRecord(captchaResult) || captchaResult.success !== true) {
+    console.error("reCAPTCHA verification rejected the contact form submission.");
+    return NextResponse.json(
+      { error: "Please complete the reCAPTCHA verification and try again." },
+      { status: 400 },
     );
   }
 
@@ -161,7 +209,7 @@ export async function POST(request: Request) {
         to: RECIPIENT,
         cc: CC_RECIPIENTS,
         replyTo: submission.email,
-        subject: "New contact form message",
+        subject: CONTACT_SUBJECT,
         text: [
           `Name: ${submission.name}`,
           `Email: ${submission.email}`,
@@ -214,7 +262,7 @@ export async function POST(request: Request) {
         to: [RECIPIENT],
         cc: CC_RECIPIENTS,
         reply_to: submission.email,
-        subject: "New contact form message",
+        subject: CONTACT_SUBJECT,
         text: [
           `Name: ${submission.name}`,
           `Email: ${submission.email}`,

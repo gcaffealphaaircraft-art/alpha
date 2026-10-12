@@ -42,6 +42,17 @@ RESEND_FROM_EMAIL=Alpha Aircraft <your-verified-sender@example.com>
 
 Verify the sender domain or address in Resend.
 
+### reCAPTCHA v2 checkbox
+
+Register a reCAPTCHA v2 checkbox site, allow your local and production domains, and configure these variables in `.env.local` and your hosting provider:
+
+```text
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
+```
+
+The site key is public; keep `RECAPTCHA_SECRET_KEY` server-side and never commit it. Restart the development server after changing environment variables. Contact submissions are rejected unless Google's verification succeeds.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

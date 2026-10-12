@@ -22345,6 +22345,17 @@ textarea {
   animation-delay: .94s;
 }
 
+.contact-recaptcha {
+  min-height: 78px;
+  margin: 8px 0 12px;
+}
+
+.contact-recaptcha p {
+  margin: 8px 0;
+  color: #b42318;
+  font-size: 13px;
+}
+
 @keyframes contact-input-reveal {
 
   from {
