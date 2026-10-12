@@ -1,111 +1,16 @@
 
 "use client";
 
-import Script from "next/script";
-import React, { useRef, useState } from "react";
-
-declare global {
-  interface Window {
-    grecaptcha?: {
-      ready: (callback: () => void) => void;
-      render: (
-        container: HTMLElement,
-        options: {
-          sitekey: string;
-          callback: (token: string) => void;
-          "expired-callback": () => void;
-          "error-callback": () => void;
-        }
-      ) => number;
-      reset: (widgetId?: number) => void;
-    };
-  }
-}
+import React, { useState } from "react";
 
 export default function ContactPage() {
-  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   const [submissionStatus, setSubmissionStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
   const [submissionError, setSubmissionError] = useState("");
-  const [captchaToken, setCaptchaToken] = useState("");
-  const [captchaError, setCaptchaError] = useState(
-    recaptchaSiteKey ? "" : "reCAPTCHA is not configured. Please contact the site administrator."
-  );
-  const [captchaReady, setCaptchaReady] = useState(false);
-  const recaptchaContainerRef = useRef<HTMLDivElement>(null);
-  const recaptchaWidgetId = useRef<number | null>(null);
-
-  const renderRecaptcha = () => {
-    if (
-      !recaptchaSiteKey ||
-      !window.grecaptcha ||
-      typeof window.grecaptcha.ready !== "function" ||
-      !recaptchaContainerRef.current ||
-      recaptchaWidgetId.current !== null
-    ) {
-      if (recaptchaSiteKey && !window.grecaptcha) {
-        setCaptchaError("Unable to load reCAPTCHA. Please refresh the page and try again.");
-      }
-      return;
-    }
-
-    try {
-      window.grecaptcha.ready(() => {
-        if (
-          !window.grecaptcha ||
-          typeof window.grecaptcha.render !== "function" ||
-          !recaptchaContainerRef.current ||
-          recaptchaWidgetId.current !== null
-        ) {
-          setCaptchaError("Unable to load reCAPTCHA. Please refresh the page and try again.");
-          return;
-        }
-
-        try {
-          recaptchaWidgetId.current = window.grecaptcha.render(
-            recaptchaContainerRef.current,
-            {
-              sitekey: recaptchaSiteKey,
-              callback: (token) => {
-                setCaptchaToken(token);
-                setCaptchaError("");
-                setSubmissionStatus("idle");
-                setSubmissionError("");
-              },
-              "expired-callback": () => {
-                setCaptchaToken("");
-                setCaptchaError("reCAPTCHA expired. Please verify again.");
-                setSubmissionStatus("idle");
-                setSubmissionError("");
-              },
-              "error-callback": () => {
-                setCaptchaToken("");
-                setCaptchaError("reCAPTCHA could not be verified. Please try again.");
-              },
-            }
-          );
-          setCaptchaReady(true);
-          setCaptchaError("");
-        } catch (error) {
-          console.error("Unable to render the contact form reCAPTCHA:", error);
-          setCaptchaError("Unable to load reCAPTCHA. Please refresh the page and try again.");
-        }
-      });
-    } catch (error) {
-      console.error("Unable to initialize the contact form reCAPTCHA:", error);
-      setCaptchaError("Unable to load reCAPTCHA. Please refresh the page and try again.");
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!captchaToken) {
-      setSubmissionStatus("error");
-      setSubmissionError("Please complete the reCAPTCHA verification.");
-      return;
-    }
 
     setSubmissionStatus("submitting");
     setSubmissionError("");
@@ -124,7 +29,6 @@ export default function ContactPage() {
           email: formData.get("email"),
           phone: formData.get("phone"),
           message: formData.get("message"),
-          captchaToken,
         }),
       });
 
@@ -134,34 +38,16 @@ export default function ContactPage() {
         throw new Error(getResponseError(result));
       }
 
-      if (
-        !isRecord(result) ||
-        result.success !== true
-      ) {
+      if (!isRecord(result) || result.success !== true) {
         throw new Error(
-          getResponseError(
-            result,
-            "Unable to send your message. Please try again."
-          )
+          getResponseError(result, "Unable to send your message. Please try again.")
         );
       }
 
-      // Clear form
       form.reset();
-      setCaptchaToken("");
-      if (recaptchaWidgetId.current !== null) {
-        window.grecaptcha?.reset(recaptchaWidgetId.current);
-      }
-
-      // Show success
       setSubmissionStatus("success");
     } catch (error) {
       console.error("Contact form submission failed:", error);
-      setCaptchaToken("");
-      if (recaptchaWidgetId.current !== null) {
-        window.grecaptcha?.reset(recaptchaWidgetId.current);
-      }
-
       setSubmissionError(
         error instanceof Error
           ? error.message
@@ -449,20 +335,6 @@ export default function ContactPage() {
                   }
                 }}
               >
-                {recaptchaSiteKey && (
-                  <Script
-                    src="https://www.google.com/recaptcha/api.js?render=explicit"
-                    strategy="afterInteractive"
-                    onReady={renderRecaptcha}
-                    onError={(error) => {
-                      console.error("Unable to load the contact form reCAPTCHA:", error);
-                      setCaptchaError(
-                        "Unable to load reCAPTCHA. Please refresh the page and try again."
-                      );
-                    }}
-                  />
-                )}
-
                 {/* NAME */}
 
                 <div className="contact-input-group">
@@ -535,15 +407,6 @@ export default function ContactPage() {
 
                 </div>
 
-                <div className="contact-recaptcha" aria-label="reCAPTCHA verification">
-                  {recaptchaSiteKey ? (
-                    <div ref={recaptchaContainerRef} />
-                  ) : (
-                    <p role="alert">{captchaError}</p>
-                  )}
-                  {recaptchaSiteKey && captchaError && <p role="alert">{captchaError}</p>}
-                </div>
-
                 {/* BUTTON */}
 
                 <button
@@ -553,7 +416,7 @@ export default function ContactPage() {
                       ? "contact-submit-success"
                       : ""
                   }`}
-                  disabled={submissionStatus === "submitting" || !captchaReady}
+                  disabled={submissionStatus === "submitting"}
                 >
 
                   <span className="contact-button-icon">
