@@ -52,6 +52,7 @@ const exhibitions = [
     cta: "EXPLORE",
     link: "/mro-beer",
   },
+  
   {
     name: "MRO South East Asia",
     location: "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
