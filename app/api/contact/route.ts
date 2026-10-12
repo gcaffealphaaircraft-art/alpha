@@ -24,7 +24,7 @@ const ACKNOWLEDGEMENT_HTML = `
 <p>Alpha Aircraft Systems</p>
   `;
 const ACKNOWLEDGEMENT_SUBJECT = "We received your message - Alpha Aircraft Systems";
-const CONTACT_SUBJECT = "Query from Alpha Aircraft Systems Site";
+const CONTACT_SUBJECT = "New contact form message";
 
 type ContactSubmission = {
   name: string;
