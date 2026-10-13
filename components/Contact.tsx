@@ -1,16 +1,88 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      render: (
+        element: Element | string,
+        options: Record<string, unknown>
+      ) => string | number;
+      reset: (widgetId?: string | number) => void;
+      getResponse: (widgetId?: string | number) => string;
+      ready: (callback: () => void) => void;
+    };
+  }
+}
 
 export default function ContactPage() {
   const [submissionStatus, setSubmissionStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
   const [submissionError, setSubmissionError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const recaptchaRef = useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = useRef<string | number | null>(null);
+
+  useEffect(() => {
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!siteKey) {
+      return;
+    }
+
+    const renderCaptcha = () => {
+      if (!recaptchaRef.current || !window.grecaptcha) {
+        return;
+      }
+
+      if (widgetIdRef.current !== null) {
+        return;
+      }
+
+      widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
+        sitekey: siteKey,
+        callback: (token: string) => setCaptchaToken(token),
+        "expired-callback": () => setCaptchaToken(""),
+        "error-callback": () => setCaptchaToken(""),
+      });
+    };
+
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (typeof window.grecaptcha?.render === "function") {
+      renderCaptcha();
+      return;
+    }
+
+    const scriptId = "google-recaptcha-script";
+    const existingScript = document.getElementById(scriptId);
+
+    if (existingScript) {
+      existingScript.addEventListener("load", renderCaptcha, { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
+    script.async = true;
+    script.defer = true;
+    script.onload = renderCaptcha;
+    document.body.appendChild(script);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      setSubmissionStatus("error");
+      setSubmissionError("Please complete the reCAPTCHA verification.");
+      return;
+    }
 
     setSubmissionStatus("submitting");
     setSubmissionError("");
@@ -29,6 +101,7 @@ export default function ContactPage() {
           email: formData.get("email"),
           phone: formData.get("phone"),
           message: formData.get("message"),
+          captchaToken,
         }),
       });
 
@@ -45,6 +118,10 @@ export default function ContactPage() {
       }
 
       form.reset();
+      setCaptchaToken("");
+      if (widgetIdRef.current !== null) {
+        window.grecaptcha?.reset(widgetIdRef.current);
+      }
       setSubmissionStatus("success");
     } catch (error) {
       console.error("Contact form submission failed:", error);
@@ -407,6 +484,10 @@ export default function ContactPage() {
 
                 </div>
 
+                <div className="contact-recaptcha-wrap">
+                  <div ref={recaptchaRef} />
+                </div>
+
                 {/* BUTTON */}
 
                 <button
@@ -416,7 +497,7 @@ export default function ContactPage() {
                       ? "contact-submit-success"
                       : ""
                   }`}
-                  disabled={submissionStatus === "submitting"}
+                  disabled={submissionStatus === "submitting" || !captchaToken}
                 >
 
                   <span className="contact-button-icon">

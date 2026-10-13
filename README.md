@@ -42,6 +42,15 @@ RESEND_FROM_EMAIL=Alpha Aircraft <your-verified-sender@example.com>
 
 Verify the sender domain or address in Resend.
 
+To protect the contact form, add Google reCAPTCHA keys:
+
+```text
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_google_recaptcha_site_key
+RECAPTCHA_SECRET_KEY=your_google_recaptcha_secret_key
+```
+
+The site key is public and is used in the browser. The secret key stays server-side and is used to verify the response before sending an email.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
