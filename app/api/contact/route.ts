@@ -33,15 +33,6 @@ type ContactSubmission = {
   message: string;
 };
 
-type RecaptchaVerificationResponse = {
-  success: boolean;
-  challenge_ts?: string;
-  hostname?: string;
-  score?: number;
-  action?: string;
-  "error-codes"?: string[];
-};
-
 type EmailProvider = "resend" | "smtp";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -68,36 +59,6 @@ function getEmailProvider(): EmailProvider | null {
   }
 
   return null;
-}
-
-async function verifyRecaptcha(token: string): Promise<boolean> {
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secretKey) {
-    console.error("RECAPTCHA_SECRET_KEY is not configured.");
-    return false;
-  }
-
-  const verificationResponse = await fetch(
-    "https://www.google.com/recaptcha/api/siteverify",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        secret: secretKey,
-        response: token,
-      }),
-    },
-  );
-
-  if (!verificationResponse.ok) {
-    console.error("reCAPTCHA verification request failed:", verificationResponse.status);
-    return false;
-  }
-
-  const payload = (await verificationResponse.json()) as RecaptchaVerificationResponse;
-  return Boolean(payload.success);
 }
 
 export const dynamic = "force-dynamic";
@@ -130,13 +91,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, phone, message, captchaToken } = body;
+  const { name, email, phone, message } = body;
   if (
     typeof name !== "string" ||
     typeof email !== "string" ||
     typeof message !== "string" ||
-    (phone !== undefined && typeof phone !== "string") ||
-    (captchaToken !== undefined && typeof captchaToken !== "string")
+    (phone !== undefined && typeof phone !== "string")
   ) {
     return NextResponse.json({ error: "Please provide valid contact details." }, { status: 400 });
   }
@@ -158,16 +118,6 @@ export async function POST(request: Request) {
     submission.message.length > 5000
   ) {
     return NextResponse.json({ error: "Please provide valid contact details." }, { status: 400 });
-  }
-
-  const captchaResponse = typeof captchaToken === "string" ? captchaToken.trim() : "";
-  if (!captchaResponse) {
-    return NextResponse.json({ error: "Please complete the reCAPTCHA verification." }, { status: 400 });
-  }
-
-  const isCaptchaValid = await verifyRecaptcha(captchaResponse);
-  if (!isCaptchaValid) {
-    return NextResponse.json({ error: "reCAPTCHA verification failed. Please try again." }, { status: 400 });
   }
 
   const provider = getEmailProvider();
