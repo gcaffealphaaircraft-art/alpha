@@ -132,6 +132,73 @@ export async function POST(request: Request) {
     );
   }
 
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!recaptchaSecret) {
+    return NextResponse.json(
+      { error: "reCAPTCHA is not configured. Set RECAPTCHA_SECRET_KEY in the hosting environment." },
+      { status: 503 },
+    );
+  }
+
+  const { captchaToken } = body;
+  if (typeof captchaToken !== "string" || !captchaToken.trim() || captchaToken.length > 10000) {
+    return NextResponse.json(
+      { error: "Please complete the reCAPTCHA verification." },
+      { status: 400 },
+    );
+  }
+
+  let recaptchaResponse: Response;
+  try {
+    recaptchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: recaptchaSecret,
+        response: captchaToken,
+      }),
+    });
+  } catch (error) {
+    console.error("Unable to reach Google reCAPTCHA verification:", error);
+    return NextResponse.json(
+      { error: "Unable to verify reCAPTCHA right now. Please try again." },
+      { status: 502 },
+    );
+  }
+
+  let recaptchaResult: unknown;
+  try {
+    recaptchaResult = await recaptchaResponse.json();
+  } catch (error) {
+    console.error("Google reCAPTCHA returned an invalid verification response:", error);
+    return NextResponse.json(
+      { error: "Unable to verify reCAPTCHA right now. Please try again." },
+      { status: 502 },
+    );
+  }
+
+  if (!recaptchaResponse.ok) {
+    console.error("Google reCAPTCHA verification failed with status:", recaptchaResponse.status);
+    return NextResponse.json(
+      { error: "Unable to verify reCAPTCHA right now. Please try again." },
+      { status: 502 },
+    );
+  }
+
+  if (
+    !isRecord(recaptchaResult) ||
+    recaptchaResult.success !== true ||
+    recaptchaResult.action !== "contact_submit" ||
+    typeof recaptchaResult.score !== "number" ||
+    recaptchaResult.score < 0.5
+  ) {
+    console.warn("Google reCAPTCHA rejected a contact form submission.");
+    return NextResponse.json(
+      { error: "reCAPTCHA verification failed. Please try again." },
+      { status: 400 },
+    );
+  }
+
   if (provider === "smtp") {
     const host = process.env.SMTP_HOST;
     const port = Number(process.env.SMTP_PORT);

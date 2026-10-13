@@ -42,6 +42,17 @@ RESEND_FROM_EMAIL=Alpha Aircraft <your-verified-sender@example.com>
 
 Verify the sender domain or address in Resend.
 
+## Contact form reCAPTCHA
+
+The contact form uses Google reCAPTCHA v3 and verifies each response on the server before sending email. Create reCAPTCHA v3 keys in the Google reCAPTCHA Admin Console, register your website's hostname, and configure:
+
+```text
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_site_key
+RECAPTCHA_SECRET_KEY=your_secret_key
+```
+
+Set `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` in the environment used to build the Next.js app and keep `RECAPTCHA_SECRET_KEY` server-side only. The form requests a token for the `contact_submit` action; the server accepts submissions only when Google confirms that action and returns a score of at least 0.5.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -2,15 +2,36 @@
 "use client";
 
 import React, { useState } from "react";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 export default function ContactPage() {
   const [submissionStatus, setSubmissionStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
   const [submissionError, setSubmissionError] = useState("");
+  const [captchaLoadError, setCaptchaLoadError] = useState("");
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!recaptchaSiteKey || !window.grecaptcha) {
+      setSubmissionStatus("error");
+      setSubmissionError(
+        captchaLoadError || "reCAPTCHA is still loading. Please try again in a moment.",
+      );
+      return;
+    }
 
     setSubmissionStatus("submitting");
     setSubmissionError("");
@@ -19,6 +40,14 @@ export default function ContactPage() {
     const formData = new FormData(form);
 
     try {
+      const captchaToken = await new Promise<string>((resolve, reject) => {
+        window.grecaptcha?.ready(() => {
+          window.grecaptcha
+            ?.execute(recaptchaSiteKey, { action: "contact_submit" })
+            .then(resolve, reject);
+        });
+      });
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -29,6 +58,7 @@ export default function ContactPage() {
           email: formData.get("email"),
           phone: formData.get("phone"),
           message: formData.get("message"),
+          captchaToken,
         }),
       });
 
@@ -407,6 +437,27 @@ export default function ContactPage() {
 
                 </div>
 
+                {recaptchaSiteKey ? (
+                  <>
+                    <Script
+                      src={`https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(recaptchaSiteKey)}`}
+                      strategy="afterInteractive"
+                      onReady={() => setRecaptchaReady(true)}
+                      onError={() => {
+                        setCaptchaLoadError(
+                          "Unable to load reCAPTCHA. Please refresh and try again.",
+                        );
+                      }}
+                    />
+                    {captchaLoadError && <p role="alert">{captchaLoadError}</p>}
+                  </>
+                ) : (
+                  <p role="alert">
+                    reCAPTCHA is not configured. Set NEXT_PUBLIC_RECAPTCHA_SITE_KEY to enable
+                    contact form submissions.
+                  </p>
+                )}
+
                 {/* BUTTON */}
 
                 <button
@@ -416,7 +467,7 @@ export default function ContactPage() {
                       ? "contact-submit-success"
                       : ""
                   }`}
-                  disabled={submissionStatus === "submitting"}
+                  disabled={submissionStatus === "submitting" || !recaptchaReady}
                 >
 
                   <span className="contact-button-icon">
