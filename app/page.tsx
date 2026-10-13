@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Lenis from "lenis";
 
 import Header from "@/components/Header";
-import HomePopup from "@/components/HomePopup";
 import Hero from "@/components/Hero";
 import WhoWeAre from "@/components/WhoWeAre";
 import Challenges from "@/components/Challenges";
@@ -15,8 +14,6 @@ import Facility from "@/components/Facility";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [showPopup, setShowPopup] = useState(true);
-
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.15,
@@ -42,7 +39,6 @@ export default function Home() {
 
   return (
     <>
-      {showPopup && <HomePopup onClose={() => setShowPopup(false)} />}
       <Header />
 
       <main>
