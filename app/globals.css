@@ -35168,3 +35168,19 @@ padding-left:10px;
     letter-spacing: 2px;
 }
 }
+
+
+
+.hero-pumpkins {
+  position: absolute;      /* sticks to the top of the page and scrolls with it */
+  top: 0;
+  left: 20.5%;             /* matches your screenshot */
+  width: clamp(110px, 10.5vw, 230px);
+  height: auto;
+  z-index: 1000;           /* above the navbar so the strings cross it */
+  pointer-events: none;    /* never blocks nav clicks */
+}
+
+@media (max-width: 767px) {
+  .hero-pumpkins { left: 6%; width: 90px; }
+}
