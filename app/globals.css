@@ -35555,8 +35555,8 @@ padding-left:10px;
   /* Hanging spider */
   @media screen and (max-width: 600px){.footer-hanging-spider {
     position: absolute;
-    top: 29%;
-    right: 40%;
+    top: 32%;
+    margin-left: -7%;
     width: 85px;
     display: flex;
     flex-direction: column;
