@@ -1107,7 +1107,7 @@ img {
   }
 
   .hero-line {
-    font-size: clamp(65px, 8.5vw, 130px);
+    font-size: clamp(65px, 7.5vw, 130px);
     letter-spacing: -4px !important;
   }
 
