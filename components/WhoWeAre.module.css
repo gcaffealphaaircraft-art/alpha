@@ -7,7 +7,14 @@
   padding: 140px 0 clamp(120px, 14vw, 240px);
   overflow: hidden;
 }
-
+@media (max-width: 640px) {
+  .mro-hero {
+  position: relative;
+  background: radial-gradient(ellipse at 30% 20%, #0a2547 0%, #051a38 55%, #041630 100%);
+  color: #f4f1ec;
+  padding: 140px 0 clamp(160px, 14vw, 240px);
+  overflow: hidden;
+}}
 /* ---------- decorations ---------- */
 /* Bats: fixed, modest size, top-left strip only */
 .bats {
