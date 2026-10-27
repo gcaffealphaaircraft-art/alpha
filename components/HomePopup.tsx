@@ -1,65 +1,71 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useEffect } from "react";
+import "./HomePopup.css";
 
-type HomePopupProps = {
-  onClose: () => void;
-};
+export default function HomePopup() {
+  const [isOpen, setIsOpen] = useState(false);
 
-export default function HomePopup({ onClose }: HomePopupProps) {
   useEffect(() => {
-    const previousBodyOverflow = document.body.style.overflow;
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 700);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onClose();
+        setIsOpen(false);
       }
     };
 
+    document.addEventListener("keydown", handleEscape);
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = previousBodyOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
     };
-  }, [onClose]);
+  }, [isOpen]);
+
+  if (!isOpen) return null;
 
   return (
     <div
-      className="home-popup-backdrop"
-      onClick={(event) => {
-        if (event.target === event.currentTarget) {
-          onClose();
-        }
-      }}
+      className="home-popup-overlay"
+      onClick={() => setIsOpen(false)}
     >
-      <section
-        aria-label="Marrakech Airshow announcement"
-        aria-modal="true"
-        className="home-popup-dialog"
+      <div
+        className="home-popup"
         role="dialog"
+        aria-modal="true"
+        aria-label="MRO Europe 2026 event announcement"
+        onClick={(event) => event.stopPropagation()}
       >
         <button
-          aria-label="Close announcement"
-          autoFocus
           className="home-popup-close"
-          onClick={onClose}
           type="button"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close popup"
         >
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M6 6l12 12M18 6 6 18" />
-          </svg>
+          &times;
         </button>
+
         <Image
-          alt="Alpha Aircraft Systems at the Marrakech Airshow, Booth M8, October 7 and 8"
-          className="home-popup-image"
-          height={1408}
+          src="/mro-europe-popup.jpg"
+          alt="Alpha Aircraft Systems at MRO Europe, Amsterdam, 28–29 October 2026"
+          width={1080}
+          height={1620}
           priority
-          src="/Alpha Aircraft Systems provides first-class APU services.webp"
-          width={1122}
+          className="home-popup-image"
+          sizes="(max-width: 600px) 92vw, 480px"
         />
-      </section>
+      </div>
     </div>
   );
 }

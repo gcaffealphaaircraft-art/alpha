@@ -12,6 +12,7 @@ import Testimonial from "@/components/Testimonial";
 import Marquee from "@/components/Marquee";
 import Facility from "@/components/Facility";
 import Footer from "@/components/Footer";
+import HomePopup from "@/components/HomePopup";
 
 export default function Home() {
   useEffect(() => {
@@ -42,6 +43,7 @@ export default function Home() {
       <Header />
 
       <main>
+        
         <Hero />
         <WhoWeAre />
         <Marquee />
@@ -50,7 +52,7 @@ export default function Home() {
           <Testimonial />
           
         <Challenges />
-        
+        <HomePopup />
         </main>
 
       <Footer />
