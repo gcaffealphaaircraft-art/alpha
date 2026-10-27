@@ -280,11 +280,11 @@ img {
 
 .hero-line {
   position: relative;
-  height: clamp(65px, 9.8vw, 120px);
-  font-size: clamp(75px, 11vw, 123px);
+  height: clamp(65px, 9.8vw, 75px);
+  font-size: clamp(75px, 11vw, 70px);
   font-weight: 600;
   line-height: 0.82;
-  letter-spacing: -0.095em;
+  letter-spacing: -4px;
   overflow: visible;
 }
 
