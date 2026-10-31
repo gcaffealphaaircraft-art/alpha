@@ -41,7 +41,7 @@ const exhibitions = [
     date: "September 22–24, 2026",
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
     cta: "EXPLORE",
-    link: "/mro-xpo-india",
+    link: "/mro-asia-pacific",
   },
   {
     name: "Aviation Africa",
