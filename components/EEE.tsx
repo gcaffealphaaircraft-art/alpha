@@ -21,7 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 ========================================================= */
 
 const exhibition = {
-  name: "Marrakech Airshow",
+  name: "MARRAKECH AIRSHOW",
 
   date: "7–10 October 2026",
 
@@ -66,9 +66,12 @@ const exhibition = {
     "/Marrakech Airshow1.mp4",
      "/Marrakech Airshow2.mp4",
      "/Marrakech Airshow3.mp4",
-    "/Marrakech Airshow4.mp4",
+    "/Marrakech Airshow5.mp4",
     
- 
+  "/Marrakech Airshow6.mp4",
+     "/Marrakech Airshow8.mp4",
+     "/Marrakech Airshow9.mp4",
+    "/Marrakech Airshow12.mp4",
         
              
      
@@ -373,7 +376,7 @@ export default function ExhibitionPage() {
 
         .alpha-exhibition-video-item {
           width: 100%;
-          
+          aspect-ratio: 16 / 9;
           display: block;
           background: #0b1822;
           object-fit: cover;

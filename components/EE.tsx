@@ -366,7 +366,7 @@ export default function ExhibitionPage() {
 
         .alpha-exhibition-video-item {
           width: 100%;
-          
+          aspect-ratio: 16 / 9;
           display: block;
           background: #0b1822;
           object-fit: cover;
