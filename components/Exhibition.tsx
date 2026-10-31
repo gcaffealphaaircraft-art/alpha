@@ -45,7 +45,7 @@ const exhibitionData: ExhibitionYear = {
      {
       title: "Marrakech Airshow",
       image:
-        "/Marrakech Airshow.JPG",
+        "/Marrakech Airshow.webp",
       location:
         "Royal Moroccan Air Force Base. Marrakech. Morocco.",
       address:

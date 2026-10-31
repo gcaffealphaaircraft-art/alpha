@@ -29,33 +29,33 @@ const exhibition = {
 
   heroImage: "/hero.png",
 
-  aboutImage: "/Marrakech Airshow.JPG",
+  aboutImage: "/Marrakech Airshow.webp",
 
   description:
     "Alpha Aircraft Systems participated for the first time in Marrakech Airshow 2026, bringing its expertise in Aircraft APU Overhaul, Repair and Maintenance to the international aerospace community. At Booth M8, our team connected with aviation professionals, industry leaders and potential partners to explore new opportunities and strengthen relationships across the African and global aviation markets.",
 
   highlights: [
-    "/Marrakech Airshow1.jpg",
-    "/Marrakech Airshow2.jpg",
+    "/Marrakech Airshow1.webp",
+    "/Marrakech Airshow2.webp",
    
-    "/Marrakech Airshow5.jpg",
-    "/Marrakech Airshow6.jpg",
-    "/Marrakech Airshow7.jpg",
-     "/Marrakech Airshow15.jpg",
-    "/Marrakech Airshow16.jpg",
-    "/Marrakech Airshow17.jpg",
-    "/Marrakech Airshow18.jpg",
-    "/Marrakech Airshow8.jpg",
-    "/Marrakech Airshow9.jpg",
-    "/Marrakech Airshow10.jpg",
-    "/Marrakech Airshow11.jpg",
-    "/Marrakech Airshow12.jpg",
-     "/Marrakech Airshow3.jpg",
-    "/Marrakech Airshow4.jpg",
-    "/Marrakech Airshow14.jpg",
-    ,
-      "/Marrakech Airshow19.jpg",
-    "/Marrakech Airshow20.jpg",
+    "/Marrakech Airshow5.webp",
+    "/Marrakech Airshow6.webp",
+    "/Marrakech Airshow7.webp",
+     "/Marrakech Airshow15.webp",
+    "/Marrakech Airshow16.webp",
+    "/Marrakech Airshow17.webp",
+    "/Marrakech Airshow18.webp",
+    "/Marrakech Airshow8.webp",
+    "/Marrakech Airshow9.webp",
+    
+    "/Marrakech Airshow11.webp",
+    "/Marrakech Airshow12.webp",
+     "/Marrakech Airshow3.webp",
+    "/Marrakech Airshow4.webp",
+    "/Marrakech Airshow14.webp",
+    
+      "/Marrakech Airshow19.webp",
+    "/Marrakech Airshow20.webp",
     
   ],
 
@@ -67,14 +67,7 @@ const exhibition = {
      "/Marrakech Airshow2.mp4",
      "/Marrakech Airshow3.mp4",
     "/Marrakech Airshow4.mp4",
-     "/Marrakech Airshow5.mp4",
-      "/Marrakech Airshow6.mp4",
-       "/Marrakech Airshow7.mp4",
-        "/Marrakech Airshow8.mp4",
-         "/Marrakech Airshow9.mp4",
-          "/Marrakech Airshow10.mp4",
-           "/Marrakech Airshow11.mp4",
-            "/Marrakech Airshow12.mp4",
+    
  
         
              

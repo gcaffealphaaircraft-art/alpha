@@ -31,7 +31,7 @@ const exhibitions = [
     name: "Marrakech Airshow",
     location: "Royal Moroccan Air Force Base. Marrakech. Morocco.",
     date: "7–10 October 2026",
-    image: "/Marrakech Airshow.jpg",
+    image: "/Marrakech Airshow.webp",
     cta: "EXPLORE",
     link: "/marrakech-airshow",
   },
