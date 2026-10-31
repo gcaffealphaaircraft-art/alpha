@@ -42,7 +42,23 @@ const exhibitionData: ExhibitionYear = {
   ======================================================= */
 
   2026: [
-    
+     {
+      title: "Marrakech Airshow",
+      image:
+        "/Marrakech Airshow.JPG",
+      location:
+        "Royal Moroccan Air Force Base. Marrakech. Morocco.",
+      address:
+        "Royal Moroccan Air Force Base. Marrakech. Morocco.",
+      date: "7–10 October 2026",
+      description:
+        "Alpha Aircraft Systems participated for the first time in Marrakech Airshow 2026, bringing its expertise in Aircraft APU Overhaul, Repair and Maintenance to the international aerospace community. ",
+
+      ctaUrl:
+        "/marrakech-airshow",
+
+      ctaText: "EXPLORE",
+    },
     {
       title: "MRO Asia Pacific",
       image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",

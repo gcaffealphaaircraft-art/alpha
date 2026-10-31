@@ -27,7 +27,14 @@ gsap.registerPlugin(ScrollTrigger);
 ========================================================= */
 
 const exhibitions = [
-  
+   {
+    name: "Marrakech Airshow",
+    location: "Royal Moroccan Air Force Base. Marrakech. Morocco.",
+    date: "7–10 October 2026",
+    image: "/Marrakech Airshow.jpg",
+    cta: "EXPLORE",
+    link: "/marrakech-airshow",
+  },
   {
     name: "MRO Asia Pacific",
     location: "Singapore EXPO, Singapore",

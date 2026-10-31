@@ -307,7 +307,7 @@ export default function ExhibitionPage() {
         }
 
         .alpha-exhibition-highlights-heading .alpha-exhibition-section-label p {
-          color: #557184;
+          color: #b84a2b;
           letter-spacing: .2em;
         }
 
