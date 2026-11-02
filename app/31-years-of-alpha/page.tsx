@@ -323,7 +323,6 @@ export default function ThirtyOneYearsOfAlphaPage() {
             ))}
           </div>
         </section>
-
         <section className={styles.peopleSection}>
           <div className={styles.peoplePhoto}>
             <Image
