@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowDown,
   Award,
@@ -9,6 +8,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StoryGallery from "./StoryGallery";
 import styles from "./page.module.css";
 
 const stories = [
@@ -168,12 +168,66 @@ const stories = [
     description:
       "Aviation is a community. We are grateful to everyone who has been part of ours.",
   },
+  {
+    image: "/Alpha-Clients.png",
+    heading: "From Right to Left",
+    description:
+      "Mr. Malinda Dhanawadena from Securatec Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha-meets-with-clients.png",
+    heading: "From Right to Left",
+    description:
+      "Ms. Saadhana Hrishank, Mr. Ramesh Narasimhan and Mr. Ratan Pandey from Precision Aviation Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha-in-germany.png",
+    heading: "In this Photograph",
+    description:
+      "Mr. Varan Kapoor from ASL Aerospace with Mr. Shubhesh Thakore from Alpha Aircraft System at MRO Europe London by AVIATION WEEK.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (1).jpeg",
+    heading: "From Right to Left",
+    description:
+      "Mr. Chiwon Hwang, Mr. Scott Min from Heli Korea and Mr. Israel Leppe from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
+    heading: "In this Photograph",
+    description:
+      "Mr. Gang Wang with Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (3).jpeg",
+    heading: "In this Photograph",
+    description:
+      "Mr. Mahinshah Shajahan from Avstock with Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (4).jpeg",
+    heading: "In this Photograph",
+    description:
+      "Mr. Mahinshah Shajahan from Avstock with Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (5).jpeg",
+    heading: "From Right to Left",
+    description:
+      "Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems with our aviation partners.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (6).jpeg",
+    heading: "From Right to Left",
+    description:
+      "Mr. Israel Leppe and Mr. Cesar Leppe from Alpha Aircraft Systems with our aviation partners.",
+  },
 ];
 
 const milestones = [
   {
     icon: Award,
-    value: "30",
+    value: "31",
     label: "Years of Excellence",
   },
   {
@@ -194,9 +248,9 @@ const milestones = [
 ];
 
 export const metadata = {
-  title: "30 Years of Alpha | Alpha Aircraft Systems",
+  title: "31 Years of Alpha | Alpha Aircraft Systems",
   description:
-    "Celebrating 30 years of Alpha Aircraft Systems and honouring the clients and collaborators who have been part of our journey since 1995.",
+    "Celebrating 31 years of Alpha Aircraft Systems and honouring the clients and collaborators who have been part of our journey since 1995.",
 };
 
 export default function ThirtyOneYearsOfAlphaPage() {
@@ -232,9 +286,9 @@ export default function ThirtyOneYearsOfAlphaPage() {
                   className={styles.coverImage}
                 />
               </div>
-              <div className={styles.yearsBadge} aria-label="30 years">
+              <div className={styles.yearsBadge} aria-label="31 years">
                 <span className={styles.badgeStars}>★ ★ ★</span>
-                <strong>30</strong>
+                <strong>31</strong>
                 <span>YEARS</span>
               </div>
             </div>
@@ -249,7 +303,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
               Who Made It Possible
             </h2>
             <p>
-              As we celebrate 30 years of Alpha Aircraft Systems, we’re taking
+              As we celebrate 31 years of Alpha Aircraft Systems, we’re taking
               a moment to honour the incredible people who’ve been part of our
               journey. This page shares stories of appreciation for the clients
               and collaborators who’ve been integral to our success.
@@ -275,7 +329,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
               sizes="(max-width: 760px) 100vw, 48vw"
               className={styles.coverImage}
             />
-            <span className={styles.roundel}>Celebrating 30 Years of Excellence</span>
+            <span className={styles.roundel}>Celebrating 31 Years of Excellence</span>
           </div>
           <div className={styles.peopleCopy}>
             <h2>
@@ -290,7 +344,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
               united by one dream: to keep the world flying.
             </p>
             <blockquote>
-              For 30 years, Alpha Aircraft Systems has been honored to serve
+              For 31 years, Alpha Aircraft Systems has been honored to serve
               this incredible community.
             </blockquote>
             <p>
@@ -312,64 +366,9 @@ export default function ThirtyOneYearsOfAlphaPage() {
               journey.
             </p>
           </div>
-          <div className={styles.galleryGrid}>
-            {stories.map((story, index) => (
-              <article className={styles.storyCard} key={`${story.image}-${index}`}>
-                <div className={styles.storyPhoto}>
-                  <Image
-                    src={story.image}
-                    alt={`${story.heading}: ${story.description}`}
-                    fill
-                    sizes="(max-width: 640px) 90vw, (max-width: 980px) 44vw, 30vw"
-                    className={styles.coverImage}
-                    loading={index < 3 ? "eager" : "lazy"}
-                  />
-                  <div className={styles.thankYouBand}>
-                    <Image
-                      src="/logo.webp"
-                      alt="Alpha Aircraft Systems"
-                      width={96}
-                      height={44}
-                    />
-                    <span>
-                      Thank You
-                      <small>for being a valued part of our journey</small>
-                    </span>
-                    <i>30</i>
-                  </div>
-                </div>
-                <div className={styles.storyCopy}>
-                  <h3>{story.heading}</h3>
-                  <p>{story.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <StoryGallery stories={stories} />
         </section>
 
-        <section className={styles.closing}>
-          <div className={styles.closingPhoto}>
-            <Image
-              src="/Alpha-exhibition-in-london-1-scaled.jpg"
-              alt="Alpha Aircraft team sharing a moment with aviation colleagues"
-              fill
-              sizes="(max-width: 760px) 100vw, 80vw"
-              className={styles.coverImage}
-            />
-            <div className={styles.closingShade} />
-            <div className={styles.closingContent}>
-              <span>Thank You</span>
-              <h2>
-                For Being A Valued Part Of
-                <br />
-                Our Journey
-              </h2>
-            </div>
-          </div>
-          <Link className={styles.closingButton} href="#faces-of-our-journey">
-            Discover Stories on Display
-          </Link>
-        </section>
       </main>
       <Footer />
     </>

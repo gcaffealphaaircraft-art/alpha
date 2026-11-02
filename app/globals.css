@@ -35564,3 +35564,20 @@ padding-left:10px;
     z-index: 4;
     pointer-events: none;
   }}
+
+  .page_storyYears__qHXIB {
+    position: absolute;
+    right: 5% !important;
+    bottom: 14% !important;
+    display: grid;
+    width: 8% !important;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid #c9b986;
+    border-radius: 50%;
+    background: #fff;
+    color: #173c59;
+    font-size: clamp(8px, 1vw, 14px);
+    font-weight: 700;
+    line-height: 1;
+}

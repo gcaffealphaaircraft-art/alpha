@@ -47,8 +47,7 @@
   line-height: 1.6;
 }
 
-.heroButton,
-.closingButton {
+.heroButton {
   display: inline-flex;
   min-height: 47px;
   padding: 0 24px;
@@ -63,8 +62,7 @@
   transition: background 180ms ease, transform 180ms ease;
 }
 
-.heroButton:hover,
-.closingButton:hover {
+.heroButton:hover {
   transform: translateY(-2px);
   background: #0c527c;
 }
@@ -291,9 +289,9 @@
 
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: start;
-  gap: 36px 62px;
+  gap: 36px 24px;
 }
 
 .storyCard {
@@ -306,65 +304,30 @@
 
 .storyPhoto {
   position: relative;
-  aspect-ratio: 0.86;
+  aspect-ratio: 418 / 520;
   overflow: hidden;
   background: #e6edf2;
 }
 
 .storyPhoto > img {
-  object-position: center 37%;
+  object-position: center;
 }
 
-.thankYouBand {
+.storyYears {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  right: 4%;
+  bottom: 15%;
   display: grid;
-  min-height: 100px;
-  padding: 12px 12px 12px 15px;
-  align-items: center;
-  grid-template-columns: 0.9fr 1.2fr 38px;
-  gap: 9px;
-  background: linear-gradient(100deg, #0797d0, #00a9e3);
-  color: #fff;
-}
-
-.thankYouBand > img {
-  width: 100%;
-  height: 42px;
-  object-fit: contain;
-  object-position: left center;
-  filter: brightness(0) invert(1);
-}
-
-.thankYouBand > span {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(15px, 1.55vw, 23px);
-  font-style: italic;
-  text-align: center;
-}
-
-.thankYouBand small {
-  display: block;
-  margin-top: 3px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  font-style: normal;
-  line-height: 1.25;
-}
-
-.thankYouBand i {
-  display: grid;
-  width: 36px;
-  height: 36px;
+  width: 7%;
+  aspect-ratio: 1;
   place-items: center;
-  border: 2px solid #fff;
+  border: 1px solid #c9b986;
   border-radius: 50%;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 20px;
-  font-style: normal;
+  background: #fff;
+  color: #173c59;
+  font-size: clamp(8px, 1vw, 14px);
   font-weight: 700;
+  line-height: 1;
 }
 
 .storyCopy {
@@ -386,62 +349,25 @@
   line-height: 1.45;
 }
 
-.closing {
-  width: min(calc(100% - 48px), 1240px);
-  margin: 0 auto;
-  padding: 10px 0 85px;
-  text-align: center;
-}
-
-.closingPhoto {
-  position: relative;
-  min-height: 430px;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #0b3153;
-  text-align: left;
-}
-
-.closingPhoto > img {
-  object-position: center 43%;
-}
-
-.closingShade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(6, 28, 47, 0.66), rgba(6, 28, 47, 0.06));
-}
-
-.closingContent {
-  position: absolute;
-  top: 50%;
-  left: 45px;
-  max-width: 900px;
-  color: #fff;
-  transform: translateY(-50%);
-}
-
-.closingContent > span {
+.readMoreButton {
   display: block;
-  margin-bottom: 18px;
-  color: #d54b3c;
-  font-size: 19px;
-}
-
-.closingContent h2 {
-  margin: 0;
+  min-height: 47px;
+  margin: 36px auto 0;
+  padding: 0 30px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--navy);
   color: #fff;
-  font-size: clamp(38px, 5vw, 78px);
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
-.closingButton {
-  min-height: 48px;
-  margin-top: 24px;
-  font-size: 13px;
+.readMoreButton:hover {
+  transform: translateY(-2px);
+  background: #0c527c;
 }
 
 @media (max-width: 900px) {
@@ -475,6 +401,7 @@
   }
 
   .galleryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
   }
 
@@ -508,8 +435,7 @@
     font-size: 13px;
   }
 
-  .heroButton,
-  .closingButton {
+  .heroButton {
     min-height: 42px;
     padding: 0 18px;
     font-size: 11px;
@@ -631,35 +557,6 @@
     gap: 17px 12px;
   }
 
-  .storyPhoto {
-    aspect-ratio: 0.72;
-  }
-
-  .thankYouBand {
-    min-height: 66px;
-    padding: 7px;
-    grid-template-columns: 0.8fr 1.3fr 26px;
-    gap: 4px;
-  }
-
-  .thankYouBand > img {
-    height: 30px;
-  }
-
-  .thankYouBand > span {
-    font-size: 13px;
-  }
-
-  .thankYouBand small {
-    font-size: 6px;
-  }
-
-  .thankYouBand i {
-    width: 24px;
-    height: 24px;
-    font-size: 14px;
-  }
-
   .storyCopy {
     padding: 10px 9px 13px;
   }
@@ -672,42 +569,16 @@
     font-size: 11px;
   }
 
-  .closing {
-    width: calc(100% - 36px);
-    padding: 0 0 55px;
-  }
-
-  .closingPhoto {
-    min-height: 285px;
-  }
-
-  .closingContent {
-    left: 19px;
-    right: 15px;
-  }
-
-  .closingContent > span {
-    font-size: 14px;
-  }
-
-  .closingContent h2 {
-    font-size: clamp(31px, 8vw, 45px);
-  }
 }
 
 @media (max-width: 380px) {
   .galleryGrid {
     grid-template-columns: 1fr;
   }
-
-  .storyPhoto {
-    aspect-ratio: 0.84;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroButton,
-  .closingButton {
+  .heroButton {
     transition: none;
   }
 }
