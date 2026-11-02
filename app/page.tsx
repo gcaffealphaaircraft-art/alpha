@@ -12,7 +12,7 @@ import Testimonial from "@/components/Testimonial";
 import Marquee from "@/components/Marquee";
 import Facility from "@/components/Facility";
 import Footer from "@/components/Footer";
-import HomePopup from "@/components/HomePopup";
+
 import Celebration from "@/components/Celebration";
 
 export default function Home() {
@@ -53,7 +53,7 @@ export default function Home() {
           <Testimonial />
           
         <Challenges />
-        <HomePopup/>
+        
         <Celebration />
               </main>
 
