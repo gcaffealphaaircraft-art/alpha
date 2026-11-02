@@ -35593,3 +35593,36 @@ padding-left:10px;
     align-items: center;
     background: linear-gradient(180deg, #75bce8 0%, #b4d2f3 60%, #f6f1fd 100%);
 }
+.page_heroCopy__IhHoq p {
+    margin: 24px 0 27px;
+    color: #082b4c !IMPORTANT;
+    font-size: 18px !important;
+    line-height: 1.6;
+}
+.page_sectionHeading__8geTn > p, .page_galleryHeading__XuDVv > p {
+    max-width: 960px;
+    margin: 25px auto 0;
+    color: #082b4c !IMPORTANT;
+    font-size: 18px !IMPORTANT;
+    line-height: 1.65;
+}
+.page_milestone__JuL7u span {
+    color: #082b4c !IMPORTANT;
+    font-size: 18px !important;
+}
+.page_peopleCopy__feYbz > p {
+    margin: 0 0 22px;
+    color: #082b4c !IMPORTANT;
+    font-size: 16px !important;
+    line-height: 1.75;
+}
+.page_storyCopy__96kEZ p {
+    margin: 0;
+    color: #082b4c !IMPORTANT;
+    font-size: 16px !IMPORTANT;
+    line-height: 1.45;
+}
+.page_milestone__JuL7u span {
+    color: #082b4c !important;
+    font-size: 14px;
+}

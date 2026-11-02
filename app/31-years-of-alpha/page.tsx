@@ -16,7 +16,7 @@ const stories = [
     image: "/Alpha-exhibition-in-london-scaled.jpg",
     heading: "From Right to Left",
     description:
-      "Ms. Shimoni A. from Agioaerospace, Mr. Ajay Agarwal from Avis Ventures & Business Aviation, Mr. Israel Leppe, Mr. Shubhesh Thakore and Mr. Cesar Leppe from Alpha Aircraft Systems.",
+      "Ms. Shimoni A. from Agiaerospace, Mr. Ajay Agarwal from Avis Ventures & Business Aviation, Mr. Israel Leppe, Mr. Shubhesh Thakore and Mr. Cesar Leppe from Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha-exhibition-in-london-1-scaled.jpg",
@@ -28,13 +28,13 @@ const stories = [
     image: "/Clients-of-Alpha-Exhibition-in-london-1-scaled.jpg",
     heading: "From Right to Left",
     description:
-      "Mr. Cesar Leppe from Alpha Aircraft Systems, Mr. Arun Xavioun from Aero Supplies Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+      "Mr. Cesar Leppe from Alpha Aircraft Systems, Mr. Arun Xaviour from Aero Supplies Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha-Exhibition-Show-1-scaled.jpg",
     heading: "From Right to Left",
     description:
-      "Mr. Henry Antonio Barahona from Avmax, Mr. Israel Leppe, Mr. Shubhesh Thakore and Mr. Cesar Leppe from Alpha Aircraft Systems at MRO Europe 2025 by AVIATION WEEK.",
+      "Mr. Henry Antonio Barahona from Avmax , Mr. Israel Leppe, Mr. Shubhesh Thakore and Mr. Cesar Leppe from Alpha Aircraft System at MRO Europe 2025 by AVIATION WEEK.",
   },
   {
     image: "/Alpha-in-London-scaled.jpg",
@@ -46,7 +46,7 @@ const stories = [
     image: "/Exhibition-of-Alpha-1-scaled.jpg",
     heading: "From Right to Left",
     description:
-      "Mr. Mark Sindone, Mr. Dean Wood from Aviation Concepts, Mr. Israel Leppe from Alpha Aircraft Systems and Mr. S M Salman Basheer from Aviation Concepts.",
+      "Mr. Mark Sindone, Mr. Dean Wood, from Aviation Concepts, Mr. Israel Leppe from Alpha Aircraft Systems and S M Salman Basheer from Aviation Concepts at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Alpha-Aircraft-Systems-at-Aero-Engines-Hamburg-Germany.jpg",
@@ -58,169 +58,169 @@ const stories = [
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (1).jpeg",
     heading: "From Right to Left",
     description:
-      "Mr. Mark Bruckner from Eastman in conversation with Mr. Shubhesh Thakore from Alpha Aircraft System at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Mark Brucks from Eastman in conversation with Mr. Shubhesh Thakore from Alpha Aircraft System at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
     heading: "From Right to Left",
     description:
-      "Mr. Michael Salomon from Sal Aerospace Technologies with Mr. Shubhesh Thakore, Mr. Israel Leppe and Mr. Cesar Leppe from Alpha Aircraft Systems at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Michael Salomon from Sal Aerospace Technologies with Mr. Shubhesh Thakore, Mr. Israel Leppe and Mr. Cesar Leppe from Alpha Aircraft Systems at MRO Europe 2025 London by Aviation Week Events.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (3).jpeg",
     heading: "From Right to Left",
     description:
-      "Mr. Cesar Leppe from Alpha Aircraft Systems with our aviation partners at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Cesar Leppe from Alpha Aircraft Systems, Mr. Shota Ozaki and Mr. Fujimura from Japan Transocean Air Co. Ltd., Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft System at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (4).jpeg",
     heading: "From Right to Left",
     description:
-      "Mr. Mark Sindone, Mr. Dean Wood from Aviation Concepts, Mr. Israel Leppe from Alpha Aircraft Systems and Mr. S M Salman Basheer from Aviation Concepts.",
+      "Ms. Lina Gervelyte from Locatory.com Aviation Spare Parts and Repair Capabilities Marketplace with Mr. Israel Leppe from Alpha Aircraft System at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (5).jpeg",
-    heading: "From Right to Left",
+    heading: "In this Photograph",
     description:
-      "Mr. Cesar Leppe from Alpha Aircraft Systems and our aviation partners at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Adrian Ionascu (second from left) with Mr. Cesar Leppe, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft System at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (6).jpeg",
     heading: "From Right to Left",
     description:
-      "Mr. Israel Leppe from Alpha Aircraft Systems meeting with our partners at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Israel Leppe from Alpha Aircraft System and Ms. Ruthie Lopes, Mr. Bernie Iglesias, Mr. Gus Reina from Aircraft Systems Division of Com-Jet Corp at MRO Europe 2025 London by AVIATION WEEK",
   },
   {
     image: "/Exhibition-MRO-Americas-1.webp",
     heading: "From Right to Left",
     description:
-      "Mr. Israel Leppe from Alpha Aircraft Systems and our valued aviation partners at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Cesar Leppe from Alpha Aircraft Systems, Mr. Jose Caparroz from Iberwell Aeronautica, Mr. Israel Leppe from Alpha Aircraft Systems and Mr. Jorge Lluch from Iberwell Aeronautica at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Exhibition-MRO-Americas-2.webp",
     heading: "From Right to Left",
     description:
-      "Mr. Israel Leppe from Alpha Aircraft Systems with aviation industry colleagues at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Russel Zali, Mr. Israel Leppe, Mr. Cesar Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Exhibition-MRO-Americas-3.webp",
     heading: "From Right to Left",
     description:
-      "Mr. Israel Leppe from Alpha Aircraft Systems and our aviation partners at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Linas Klinauskas from Colibri Aero & Mr. Israel Leppe from Alpha Aircraft System at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Exhibition-MRO-Americas-6.webp",
-    heading: "From Right to Left",
+    heading: "From Left to Right",
     description:
-      "Mr. Cesar Leppe from Alpha Aircraft Systems meeting our valued clients and collaborators at MRO Europe 2025 London by AVIATION WEEK.",
+      "Ms. Juliana Christensen, Mr. Justin Spaulding from The 145 and Mr. Shubhesh Thakore from Alpha Aircraft Systems at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Exhibition-MRO-Americas-7.webp",
     heading: "From Right to Left",
     description:
-      "Mr. Shubhesh Thakore from Alpha Aircraft Systems with our valued aviation partners at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Suresh Rahangdale from RSR Aviation and Mr. Shubhesh Thakore from Alpha Aircraft Systems at MRO Europe 2025 London by Aviation Week.",
   },
   {
     image: "/Exhibition-MRO-Americas-8.webp",
     heading: "From Right to Left",
     description:
-      "The Alpha Aircraft Systems team with our valued clients and collaborators at MRO Europe 2025 London by AVIATION WEEK.",
+      "Mr. Bruno Falavigna from New Gen Aerospace Corporation and Mr. Israel Leppe from Alpha Aircraft Systems at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Alpha Aircraft Systems at PB Expo 2026 (1).jpeg",
-    heading: "In this Photograph",
+    heading: "From Left to Right",
     description:
-      "A moment of appreciation with the clients and collaborators who have been part of our journey.",
+      "Mr. Laurent A. from AOG Accessories and Mr. Israel Leppe from Alpha Aircraft Systems at MRO Europe 2025 London by AVIATION WEEK.",
   },
   {
     image: "/Alpha Aircraft Systems at PB Expo 2026 (2).jpeg",
     heading: "In this Photograph",
     description:
-      "Thank you to our clients, partners and friends for being a valued part of our journey.",
+      "Mr. Sudhir Kesharwani (center) from U.S. Commercial Service International Trade Administration with Mr. Israel Leppe (right) and Mr. Shubhesh Thakore (left) from Alpha Aircraft",
   },
   {
     image: "/Alpha Aircraft Systems at PB Expo 2026 (3).jpeg",
     heading: "In this Photograph",
     description:
-      "Celebrating the people and partnerships that keep the aviation community moving forward.",
+      "Mr. Reddie Reynon (center) from Aero Strategies, Mr. Leonardo Gonzalez (right) and Mr. Israel Leppe (left) from Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha Aircraft Systems at PB Expo 2026 (4).jpeg",
     heading: "In this Photograph",
     description:
-      "With gratitude to the aviation professionals who have supported Alpha Aircraft Systems.",
+      "Mr. Joe Da Silva (left) and Mr. Vitor Batista Castilhos (right) from South Seas Aviation Inc with Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Beer 2026-Istanbul.jpeg",
-    heading: "From Right to Left",
+    heading: "From Left to Right",
     description:
-      "The Alpha Aircraft Systems team with valued aviation partners and collaborators.",
+      "Mr. Igor Litvin, CEO, Business Jet Engine Maintenance Solutions and Mr. Israel Leppe, CEO, Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Beer 2026.jpeg",
-    heading: "In this Photograph",
-    description:
-      "Thank you for your steadfast support and trust throughout our journey.",
-  },
-  {
-    image: "/Alpha Aircraft Systems at MROBEER.jpeg",
-    heading: "From Right to Left",
-    description:
-      "Aviation is a community. We are grateful to everyone who has been part of ours.",
-  },
-  {
-    image: "/Alpha-Clients.png",
-    heading: "From Right to Left",
-    description:
-      "Mr. Malinda Dhanawadena from Securatec Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
-  },
-  {
-    image: "/Alpha-meets-with-clients.png",
-    heading: "From Right to Left",
-    description:
-      "Ms. Saadhana Hrishank, Mr. Ramesh Narasimhan and Mr. Ratan Pandey from Precision Aviation Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
-  },
-  {
-    image: "/Alpha-in-germany.png",
-    heading: "In this Photograph",
-    description:
-      "Mr. Varan Kapoor from ASL Aerospace with Mr. Shubhesh Thakore from Alpha Aircraft System at MRO Europe London by AVIATION WEEK.",
-  },
-  {
-    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (1).jpeg",
     heading: "From Right to Left",
     description:
       "Mr. Chiwon Hwang, Mr. Scott Min from Heli Korea and Mr. Israel Leppe from Alpha Aircraft Systems.",
   },
   {
-    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
+    image: "/Alpha Aircraft Systems at MROBEER.jpeg",
+    heading: "From Right to Left",
+    description:
+      "Mr. Saurabh Tripathi from Fenix Aerospace (and former Regional Director for Asia & Middle East at Aventure Aviation) and Mr. Israel Leppe from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha-Clients.png",
     heading: "In this Photograph",
     description:
-      "Mr. Gang Wang with Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+      "Mr. Pascal Jacquemont (left) and Mr. Amir Zamri (right) from Aerobay with Mr. Shubhesh Thakore (centre) from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha-meets-with-clients.png",
+    heading: "In this Photograph",
+    description:
+      "Mr. Amyr Qureshi (left) from Aventure Aviation, Mr. Shubhesh Thakore (center) and Mr. Israel Leppe (right) from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha-in-germany.png",
+    heading: "In this Photograph",
+    description:
+      "Mr. Yegorov Sergey from Global Aero Services (center), Mr. Leonardo Gonzalez (left) and Mr. Israel Leppe (right) from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (1).jpeg",
+    heading: "From Right to Left",
+    description:
+      "Mr. Israel Leppe from Alpha Aircraft Systems, Mr. Victor Barrera, Mr. Jorge Orlando Espinosa Garcia from Satena, Mr. Shubhesh Thakore and Mr. Leonardo Gonzalez from Alpha Aircraft Systems.",
+  },
+  {
+    image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
+    heading: "From Right to Left",
+    description:
+      "Mr. Lalindra Danawardena from Securatec Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (3).jpeg",
-    heading: "In this Photograph",
+    heading: "From Right to Left",
     description:
-      "Mr. Mahinshah Shajahan from Avstock with Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+      "Ms. Saadhana Ramesh, Mr. Ramesh Narasimhan, Mr. Ratan Pandey from Precision Aviation Group, Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (4).jpeg",
     heading: "In this Photograph",
     description:
-      "Mr. Mahinshah Shajahan from Avstock with Mr. Shubhesh Thakore from Alpha Aircraft Systems.",
+      "Mr. Varun Kapoor (right) from ASL Aerospace with Mr. Shubhesh Thakore (left) from Alpha Aircraft System at MRO Europe London by AVIATION WEEK.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (5).jpeg",
-    heading: "From Right to Left",
+    heading: "In this Photograph",
     description:
-      "Mr. Israel Leppe and Mr. Shubhesh Thakore from Alpha Aircraft Systems with our aviation partners.",
+      "Mr. Gang Wang (left) with Mr. Shubhesh Thakore (right) from Alpha Aircraft Systems.",
   },
   {
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (6).jpeg",
-    heading: "From Right to Left",
+    heading: "In this Photograph",
     description:
-      "Mr. Israel Leppe and Mr. Cesar Leppe from Alpha Aircraft Systems with our aviation partners.",
+      "Mr. Mahinshah Shajahan (left) from Avstock with Mr. Shubhesh Thakore (right) from Alpha Aircraft Systems.",
   },
 ];
 
@@ -278,7 +278,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
             <div className={styles.heroVisual}>
               <div className={styles.heroPhoto}>
                 <Image
-                  src="/Alpha-Aircraft-Systems-celebrating-30-years-Header-Image.webp"
+                  src="/Cam1.webp"
                   alt="Alpha Aircraft Systems team and partners at MRO Europe"
                   fill
                   priority
@@ -307,10 +307,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
               Who Made It Possible
             </h2>
             <p>
-              As we celebrate 31 years of Alpha Aircraft Systems, we’re taking
-              a moment to honour the incredible people who’ve been part of our
-              journey. This page shares stories of appreciation for the clients
-              and collaborators who’ve been integral to our success.
+              As we celebrate 30 years of Alpha Aircraft Systems, we’re taking a moment to honour the incredible people who’ve been part of our journey. This page shares stories of appreciation for the clients and collaborators who’ve been integral to our success.
             </p>
           </div>
           <div className={styles.milestoneGrid}>
@@ -335,25 +332,19 @@ export default function ThirtyOneYearsOfAlphaPage() {
           </div>
           <div className={styles.peopleCopy}>
             <h2>
-              Aviation isn&apos;t just about ✈ aircraft.
+              Aviation isn't just about ✈ aircraft.
               <br />
-              It&apos;s about the People.
+              It's about the People.
             </h2>
             <div className={styles.accentRule} />
             <p>
-              All connected by the skies above us. From different continents,
-              different cultures, different walks of life united in one frame,
-              united by one dream: to keep the world flying.
+             All connected by the skies above us. From different continents, different cultures, different walks of life united in one frame, united by one dream: to keep the world flying.
             </p>
             <blockquote>
-              For 31 years, Alpha Aircraft Systems has been honored to serve
-              this incredible community.
+             For 31 years, Alpha Aircraft Systems has been honored to serve this incredible community.
             </blockquote>
             <p>
-              From Miami to Singapore, from Dubai to London, from Africa to
-              every corner of the globe — we&apos;ve witnessed how aviation
-              doesn&apos;t just move aircraft, it moves humanity forward,
-              together.
+              From Miami to Singapore, from Dubai to London, from Africa to every corner of the globe — we’ve witnessed how aviation doesn’t just move aircraft, it moves humanity forward, together.
             </p>
             <div className={styles.accentRule} />
           </div>
@@ -363,9 +354,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
           <div className={styles.galleryHeading}>
             <h2>Faces of Our Journey</h2>
             <p>
-              This page on our website shares stories of appreciation for the
-              clients and collaborators who&apos;ve been integral to our
-              journey.
+              This page on our website shares stories of appreciation for the clients and collaborators who’ve been integral to our journey.
             </p>
           </div>
           <StoryGallery stories={stories} />
