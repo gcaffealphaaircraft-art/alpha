@@ -206,6 +206,7 @@ export default function Footer() {
             <Link href="/contact">Contact</Link>
             <Link href="/exhibition">Exhibitions</Link>
             <Link href="/#certifications">Certifications</Link>
+            <Link href="/31-years-of-alpha">31 Years of Alpha</Link>
           </div>
 
           {/* Services */}

@@ -35581,3 +35581,15 @@ padding-left:10px;
     font-weight: 700;
     line-height: 1;
 }
+.page_milestoneSection__nfhVT {
+    padding: 0px 24px 86px !important;
+    background: linear-gradient(180deg, #f8f3fc, #fff 86%);
+}
+.page_hero__fJPq_ {
+    position: relative;
+    display: flex;
+    min-height: 0px !IMPORTANT;
+    padding: 145px clamp(28px, 6.5vw, 125px) 65px;
+    align-items: center;
+    background: linear-gradient(180deg, #75bce8 0%, #b4d2f3 60%, #f6f1fd 100%);
+}

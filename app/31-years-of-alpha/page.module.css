@@ -95,38 +95,12 @@
   position: absolute;
   bottom: -7px;
   left: -65px;
-  display: flex;
   width: 168px;
   height: 168px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 7px solid #fff;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 7px 22px rgba(8, 47, 83, 0.18);
-  color: var(--navy);
-  transform: rotate(-7deg);
 }
 
-.yearsBadge strong {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 67px;
-  font-weight: 700;
-  line-height: 0.9;
-}
-
-.yearsBadge > span:last-child {
-  margin-top: 3px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  letter-spacing: 0.08em;
-}
-
-.badgeStars {
-  color: #ba4139;
-  font-size: 21px;
-  letter-spacing: 2px;
+.yearsBadgeImage {
+  object-fit: contain;
 }
 
 .milestoneSection {
@@ -386,10 +360,6 @@
     height: 130px;
   }
 
-  .yearsBadge strong {
-    font-size: 52px;
-  }
-
   .peopleSection {
     padding-right: 34px;
     padding-left: 34px;
@@ -450,19 +420,6 @@
     left: -5px;
     width: 108px;
     height: 108px;
-    border-width: 5px;
-  }
-
-  .yearsBadge strong {
-    font-size: 42px;
-  }
-
-  .yearsBadge > span:last-child {
-    font-size: 12px;
-  }
-
-  .badgeStars {
-    font-size: 15px;
   }
 
   .milestoneSection {

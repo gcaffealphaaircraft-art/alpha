@@ -278,7 +278,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
             <div className={styles.heroVisual}>
               <div className={styles.heroPhoto}>
                 <Image
-                  src="/Alpha-exhibition-in-london-scaled.jpg"
+                  src="/Alpha-Aircraft-Systems-celebrating-30-years-Header-Image.webp"
                   alt="Alpha Aircraft Systems team and partners at MRO Europe"
                   fill
                   priority
@@ -287,9 +287,13 @@ export default function ThirtyOneYearsOfAlphaPage() {
                 />
               </div>
               <div className={styles.yearsBadge} aria-label="31 years">
-                <span className={styles.badgeStars}>★ ★ ★</span>
-                <strong>31</strong>
-                <span>YEARS</span>
+                <Image
+                  src="/31.png"
+                  alt="31 years"
+                  fill
+                  sizes="(max-width: 640px) 108px, (max-width: 900px) 130px, 168px"
+                  className={styles.yearsBadgeImage}
+                />
               </div>
             </div>
           </div>
@@ -323,13 +327,12 @@ export default function ThirtyOneYearsOfAlphaPage() {
         <section className={styles.peopleSection}>
           <div className={styles.peoplePhoto}>
             <Image
-              src="/Alpha-Exhibition-Show-1-scaled.jpg"
+              src="/Alpha Team.jpg"
               alt="Alpha Aircraft Systems team with aviation partners"
               fill
               sizes="(max-width: 760px) 100vw, 48vw"
               className={styles.coverImage}
             />
-            <span className={styles.roundel}>Celebrating 31 Years of Excellence</span>
           </div>
           <div className={styles.peopleCopy}>
             <h2>
