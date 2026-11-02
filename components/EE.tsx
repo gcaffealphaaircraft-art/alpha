@@ -379,23 +379,24 @@ export default function ExhibitionPage() {
           letter-spacing: .04em;
         }
 
-        .alpha-exhibition-gallery {
+        .alpha-exhibition-highlights .alpha-exhibition-gallery {
           position: relative;
           width: min(1400px, calc(100% - 32px));
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
-          grid-auto-rows: 1fr;
+          grid-template-rows: none;
+          grid-auto-rows: auto;
           column-gap: 12px;
           row-gap: 12px;
           align-items: stretch;
         }
 
-        .alpha-exhibition-gallery-item {
+        .alpha-exhibition-highlights .alpha-exhibition-gallery-item {
           position: relative;
           display: block;
           width: 100% !important;
-          height: 100% !important;
+          height: auto !important;
           min-width: 0 !important;
           min-height: 0 !important;
           max-height: none !important;
@@ -463,9 +464,10 @@ export default function ExhibitionPage() {
             width: calc(100% - 32px);
           }
           .alpha-exhibition-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-          .alpha-exhibition-gallery {
+          .alpha-exhibition-highlights .alpha-exhibition-gallery {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            grid-auto-rows: 1fr;
+            grid-template-rows: none;
+            grid-auto-rows: auto;
             column-gap: 12px;
             row-gap: 12px;
           }
@@ -481,13 +483,7 @@ export default function ExhibitionPage() {
           .alpha-exhibition-highlights-heading {
             width: calc(100% - 24px);
           }
-          .alpha-exhibition-video-grid { grid-template-columns: 1fr; gap: 12px; }
-          .alpha-exhibition-highlight-tabs { margin-bottom: 18px; }
-          .alpha-exhibition-highlight-tab { padding: 12px 16px; font-size: 12px; }
-          .alpha-exhibition-highlights-heading {
-            margin-bottom: 22px;
-          }
-          .alpha-exhibition-gallery {
+          .alpha-exhibition-highlights .alpha-exhibition-video-grid {
             display: flex;
             gap: 12px;
             overflow-x: auto;
@@ -497,6 +493,31 @@ export default function ExhibitionPage() {
             scroll-padding-left: 1px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+          }
+          .alpha-exhibition-highlights .alpha-exhibition-video-grid::-webkit-scrollbar {
+            display: none;
+          }
+          .alpha-exhibition-video-card {
+            flex: 0 0 86%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+          }
+          .alpha-exhibition-highlight-tabs { margin-bottom: 18px; }
+          .alpha-exhibition-highlight-tab { padding: 12px 16px; font-size: 12px; }
+          .alpha-exhibition-highlights-heading {
+            margin-bottom: 22px;
+          }
+          .alpha-exhibition-highlights .alpha-exhibition-gallery {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 2px 1px 12px;
+            scroll-snap-type: x mandatory;
+            scroll-padding-left: 1px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            grid-template-rows: none;
           }
           .alpha-exhibition-gallery::-webkit-scrollbar { display: none; }
           .alpha-exhibition-gallery-item {
@@ -812,7 +833,7 @@ export default function ExhibitionPage() {
                     className="alpha-exhibition-video-item"
                     controls
                     playsInline
-                    preload="metadata"
+                    preload="none"
                   >
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.

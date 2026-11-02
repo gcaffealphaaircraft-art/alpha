@@ -113,15 +113,15 @@ export default function Footer() {
     <footer className="site-footer">
       {/* Background decorations */}
       <div className="footer-background-art" aria-hidden="true">
-        <Image
+        {/* <Image
           src="/halloween/web 1.png"
           alt=""
           width={260}
           height={260}
           className="footer-web footer-web-left"
-        />
+        /> */}
 
-        <Image
+        {/* <Image
           src="/halloween/web 2.png"
           alt=""
           width={260}
@@ -135,19 +135,19 @@ export default function Footer() {
           width={150}
           height={220}
           className="footer-ghost footer-ghost-one"
-        />
+        /> */}
 
         
 
         
 
-        <Image
+        {/* <Image
           src="/halloween/Mob 1.png"
           alt=""
           width={150}
           height={220}
           className="footer-ghost footer-ghost-four"
-        />
+        /> */}
       </div>
 
       <div className="footer-shell">
@@ -246,24 +246,24 @@ export default function Footer() {
             </a>
           </p>
 
-          <Image
+          {/* <Image
             src="/halloween/web 4.png"
             alt=""
             width={850}
             height={150}
             className="footer-graveyard"
-          />
+          /> */}
         </div>
 
         {/* Hanging spider */}
         <div className="footer-hanging-spider" aria-hidden="true">
           <span className="footer-spider-thread" />
-          <Image
+          {/* <Image
             src="/halloween/web 3.png"
             alt=""
             width={120}
             height={150}
-          />
+          /> */}
         </div>
       </div>
     </footer>

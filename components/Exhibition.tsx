@@ -1282,7 +1282,7 @@ export default function Exhibition() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
         >
 
           <source

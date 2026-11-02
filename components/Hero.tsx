@@ -554,6 +554,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
@@ -906,14 +907,17 @@ gsap.to(pumpkins.current, {
 
   return (
     <>
-    <img
+    {/* <Image
       ref={pumpkins}
       src="/halloween/hanging-pumpkins.png"
+      width={960}
+      height={1704}
+      sizes="(max-width: 767px) 90px, 230px"
       alt=""
       aria-hidden
       className="hero-pumpkins"
     />
-    
+     */}
     <section
       ref={root}
       className="hero-section"
