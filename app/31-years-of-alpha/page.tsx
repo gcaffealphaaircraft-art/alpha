@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import {
   ArrowDown,
@@ -34,7 +35,7 @@ const stories = [
     image: "/Alpha-Exhibition-Show-1-scaled.jpg",
     heading: "From Right to Left",
     description:
-      "Mr. Henry Antonio Barahona from Avmax , Mr. Israel Leppe, Mr. Shubhesh Thakore and Mr. Cesar Leppe from Alpha Aircraft System at MRO Europe 2025 by AVIATION WEEK.",
+      "Mr. Henry Antonio Barahona from Avmax, Mr. Israel Leppe, Mr. Shubhesh Thakore and Mr. Cesar Leppe from Alpha Aircraft System at MRO Europe 2025 by AVIATION WEEK.",
   },
   {
     image: "/Alpha-in-London-scaled.jpg",
@@ -257,7 +258,9 @@ export default function ThirtyOneYearsOfAlphaPage() {
   return (
     <>
       <Header />
+
       <main className={styles.page}>
+        {/* HERO SECTION */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <div className={styles.heroCopy}>
@@ -268,13 +271,16 @@ export default function ThirtyOneYearsOfAlphaPage() {
                 <br />
                 Excellence
               </h1>
+
               <p>
                 Behind every milestone are the people who make it meaningful
               </p>
+
               <a className={styles.heroButton} href="#our-journey">
                 Explore Journey <ArrowDown size={14} aria-hidden="true" />
               </a>
             </div>
+
             <div className={styles.heroVisual}>
               <div className={styles.heroPhoto}>
                 <Image
@@ -286,6 +292,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
                   className={styles.coverImage}
                 />
               </div>
+
               <div className={styles.yearsBadge} aria-label="31 years">
                 <Image
                   src="/31.png"
@@ -299,6 +306,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
           </div>
         </section>
 
+        {/* MILESTONES SECTION */}
         <section className={styles.milestoneSection} id="our-journey">
           <div className={styles.sectionHeading}>
             <h2>
@@ -306,10 +314,15 @@ export default function ThirtyOneYearsOfAlphaPage() {
               <br />
               Who Made It Possible
             </h2>
+
             <p>
-              As we celebrate 30 years of Alpha Aircraft Systems, we’re taking a moment to honour the incredible people who’ve been part of our journey. This page shares stories of appreciation for the clients and collaborators who’ve been integral to our success.
+              As we celebrate 31 years of Alpha Aircraft Systems, we’re taking
+              a moment to honour the incredible people who’ve been part of our
+              journey. This page shares stories of appreciation for the
+              clients and collaborators who’ve been integral to our success.
             </p>
           </div>
+
           <div className={styles.milestoneGrid}>
             {milestones.map(({ icon: Icon, value, label }) => (
               <div className={styles.milestone} key={label}>
@@ -320,6 +333,8 @@ export default function ThirtyOneYearsOfAlphaPage() {
             ))}
           </div>
         </section>
+
+        {/* PEOPLE SECTION */}
         <section className={styles.peopleSection}>
           <div className={styles.peoplePhoto}>
             <Image
@@ -330,37 +345,55 @@ export default function ThirtyOneYearsOfAlphaPage() {
               className={styles.coverImage}
             />
           </div>
+
           <div className={styles.peopleCopy}>
             <h2>
-              Aviation isn't just about ✈ aircraft.
+              Aviation isn&apos;t just about ✈ aircraft.
               <br />
-              It's about the People.
+              It&apos;s about the People.
             </h2>
+
             <div className={styles.accentRule} />
+
             <p>
-             All connected by the skies above us. From different continents, different cultures, different walks of life united in one frame, united by one dream: to keep the world flying.
+              All connected by the skies above us. From different continents,
+              different cultures, different walks of life united in one frame,
+              united by one dream: to keep the world flying.
             </p>
+
             <blockquote>
-             For 31 years, Alpha Aircraft Systems has been honored to serve this incredible community.
+              For 31 years, Alpha Aircraft Systems has been honored to serve
+              this incredible community.
             </blockquote>
+
             <p>
-              From Miami to Singapore, from Dubai to London, from Africa to every corner of the globe — we’ve witnessed how aviation doesn’t just move aircraft, it moves humanity forward, together.
+              From Miami to Singapore, from Dubai to London, from Africa to
+              every corner of the globe — we’ve witnessed how aviation doesn’t
+              just move aircraft, it moves humanity forward, together.
             </p>
+
             <div className={styles.accentRule} />
           </div>
         </section>
 
-        <section className={styles.gallerySection} id="faces-of-our-journey">
+        {/* GALLERY SECTION */}
+        <section
+          className={styles.gallerySection}
+          id="faces-of-our-journey"
+        >
           <div className={styles.galleryHeading}>
             <h2>Faces of Our Journey</h2>
+
             <p>
-              This page on our website shares stories of appreciation for the clients and collaborators who’ve been integral to our journey.
+              This page on our website shares stories of appreciation for the
+              clients and collaborators who’ve been integral to our journey.
             </p>
           </div>
+
           <StoryGallery stories={stories} />
         </section>
-
       </main>
+
       <Footer />
     </>
   );
