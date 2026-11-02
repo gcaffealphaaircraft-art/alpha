@@ -327,7 +327,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
         <section className={styles.peopleSection}>
           <div className={styles.peoplePhoto}>
             <Image
-              src="/Alpha Team.jpg"
+              src="/Team.webp"
               alt="Alpha Aircraft Systems team with aviation partners"
               fill
               sizes="(max-width: 760px) 100vw, 48vw"
