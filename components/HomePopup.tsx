@@ -56,16 +56,15 @@ export default function HomePopup() {
           &times;
         </button>
 
-       <a href="/31-years-of-alpha" >
-         <Image
-           src="/Alpha Foundation Day (2-11-26) .webp"
-           alt="Alpha Aircraft Systems at MRO Europe, Amsterdam, 28–29 October 2026"
-           width={1080}
-           height={1620}
-           priority
+        <Image
+          src="/Alpha Foundation Day (2-11-26) .webp"
+          alt="Alpha Aircraft Systems at MRO Europe, Amsterdam, 28–29 October 2026"
+          width={1080}
+          height={1620}
+          priority
           className="home-popup-image"
           sizes="(max-width: 600px) 92vw, 480px"
-        /></a>
+        />
       </div>
     </div>
   );
