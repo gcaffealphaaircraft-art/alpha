@@ -25,17 +25,17 @@ const exhibition = {
 
   date: "7–10 October 2026",
 
-  location: "Royal Moroccan Air Force Base. Marrakech. Morocco.",
+  location: "Royal Moroccan Air Force Base, Marrakech, Morocco.",
 
   heroImage: "/hero.png",
 
-  aboutImage: "/Marrakech Airshow.webp",
+  aboutImage: "/Marrakech Airshow1.webp",
 
   description:
-    "Alpha Aircraft Systems participated for the first time in Marrakech Airshow 2026, bringing its expertise in Aircraft APU Overhaul, Repair and Maintenance to the international aerospace community. At Booth M8, our team connected with aviation professionals, industry leaders and potential partners to explore new opportunities and strengthen relationships across the African and global aviation markets.",
+    "Alpha Aircraft Systems participated for the first time in Marrakech Airshow 2026, bringing its expertise in Aircraft APU Overhaul, Repair and Maintenance to the moroccan aerospace community. At Booth M8, our team connected with aviation professionals, industry leaders and potential partners to explore new opportunities and strengthen relationships across the African and global aviation markets.",
 
   highlights: [
-    "/Marrakech Airshow1.webp",
+    
     "/Marrakech Airshow2.webp",
    
     "/Marrakech Airshow5.webp",
@@ -60,23 +60,6 @@ const exhibition = {
   ],
 
   video: "/Alpha-Aircraft-Systems-Facility-at-Hialeah.mp4", // CTA background video
-
-  // Add all uploaded gallery videos here. Keep video files inside /public.
-  videos: [
-    "/Marrakech Airshow1.mp4",
-     "/Marrakech Airshow2.mp4",
-     "/Marrakech Airshow3.mp4",
-    "/Marrakech Airshow5.mp4",
-    
-  "/Marrakech Airshow6.mp4",
-     "/Marrakech Airshow8.mp4",
-     "/Marrakech Airshow9.mp4",
-    "/Marrakech Airshow12.mp4",
-        
-             
-     
-    // Add more paths to enable the Videos READ MORE button.
-  ],
 };
 
 
@@ -89,8 +72,6 @@ export default function ExhibitionPage() {
     useRef<HTMLDivElement>(null);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [showAllGalleryImages, setShowAllGalleryImages] = useState(false);
-  const [showAllGalleryVideos, setShowAllGalleryVideos] = useState(false);
-  const [activeHighlightTab, setActiveHighlightTab] = useState<"images" | "videos">("images");
 
 
   /* =======================================================
@@ -327,68 +308,6 @@ export default function ExhibitionPage() {
           line-height: 1.02;
         }
 
-        .alpha-exhibition-highlight-tabs {
-          width: min(1400px, calc(100% - 32px));
-          margin: 0 auto 22px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          border-bottom: 1px solid #dce3e8;
-        }
-
-        .alpha-exhibition-highlight-tab {
-          appearance: none;
-          border: 0;
-          border-bottom: 3px solid transparent;
-          margin-bottom: -1px;
-          padding: 13px 22px;
-          background: transparent;
-          color: #617584;
-          font: inherit;
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: .12em;
-          cursor: pointer;
-          transition: color .25s ease, border-color .25s ease;
-        }
-
-        .alpha-exhibition-highlight-tab:hover,
-        .alpha-exhibition-highlight-tab.is-active {
-          color: #10283a;
-        }
-
-        .alpha-exhibition-highlight-tab.is-active {
-          border-bottom-color: #b58b4a;
-        }
-
-        .alpha-exhibition-video-grid {
-          width: min(1400px, calc(100% - 32px));
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 16px;
-        }
-
-        .alpha-exhibition-video-card {
-          min-width: 0;
-          width: 100%;
-        }
-
-        .alpha-exhibition-video-item {
-          width: 100%;
-          aspect-ratio: 16 / 9;
-          display: block;
-          background: #0b1822;
-          object-fit: cover;
-        }
-
-        .alpha-exhibition-video-caption {
-          margin: 9px 0 0;
-          color: #233746;
-          font-size: 13px;
-          letter-spacing: .04em;
-        }
-
         .alpha-exhibition-gallery {
           position: relative;
           width: min(1400px, calc(100% - 32px));
@@ -468,12 +387,9 @@ export default function ExhibitionPage() {
 
         @media (min-width: 601px) and (max-width: 900px) {
           .alpha-exhibition-gallery,
-          .alpha-exhibition-video-grid,
-          .alpha-exhibition-highlight-tabs,
           .alpha-exhibition-highlights-heading {
             width: calc(100% - 32px);
           }
-          .alpha-exhibition-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .alpha-exhibition-highlights .alpha-exhibition-gallery {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             grid-template-rows: none;
@@ -488,34 +404,8 @@ export default function ExhibitionPage() {
             padding: 48px 0 56px;
           }
           .alpha-exhibition-gallery,
-          .alpha-exhibition-video-grid,
-          .alpha-exhibition-highlight-tabs,
           .alpha-exhibition-highlights-heading {
             width: calc(100% - 24px);
-          }
-          .alpha-exhibition-highlights .alpha-exhibition-video-grid {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 2px 1px 12px;
-            scroll-snap-type: x mandatory;
-            scroll-padding-left: 1px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-          }
-          .alpha-exhibition-highlights .alpha-exhibition-video-grid::-webkit-scrollbar {
-            display: none;
-          }
-          .alpha-exhibition-video-card {
-            flex: 0 0 86%;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-          }
-          .alpha-exhibition-highlight-tabs { margin-bottom: 18px; }
-          .alpha-exhibition-highlight-tab { padding: 12px 16px; font-size: 12px; }
-          .alpha-exhibition-highlights-heading {
-            margin-bottom: 22px;
           }
           .alpha-exhibition-highlights .alpha-exhibition-gallery {
             display: flex;
@@ -747,125 +637,68 @@ export default function ExhibitionPage() {
         </div>
 
 
-        {/* IMAGE / VIDEO TABS */}
-        <div className="alpha-exhibition-highlight-tabs" role="tablist" aria-label="Exhibition media">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeHighlightTab === "images"}
-            className={`alpha-exhibition-highlight-tab ${activeHighlightTab === "images" ? "is-active" : ""}`}
-            onClick={() => setActiveHighlightTab("images")}
-          >
-            PHOTOS
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeHighlightTab === "videos"}
-            className={`alpha-exhibition-highlight-tab ${activeHighlightTab === "videos" ? "is-active" : ""}`}
-            onClick={() => setActiveHighlightTab("videos")}
-          >
-            VIDEOS
-          </button>
-        </div>
+        {/* PHOTO GALLERY ONLY */}
 
-        {activeHighlightTab === "images" ? (
-          <>
-            <div className="alpha-exhibition-gallery">
+        <div className="alpha-exhibition-gallery">
 
           {(showAllGalleryImages
             ? exhibition.highlights
             : exhibition.highlights.slice(0, 8)
-          ).map(
-            (image, index) => (
+          ).map((image, index) => (
 
-              <div
-                key={`${image}-${index}`}
-                className={`
-                  alpha-exhibition-gallery-item
-                `}
-                role="button"
-                tabIndex={0}
-                aria-label={`View ${exhibition.name} gallery image ${index + 1}`}
-                onClick={() => setSelectedImage(index)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setSelectedImage(index);
-                  }
-                }}
-                style={{ cursor: "zoom-in" }}
-              >
+            <div
+              key={`${image}-${index}`}
+              className="alpha-exhibition-gallery-item"
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${exhibition.name} gallery image ${index + 1}`}
+              onClick={() => setSelectedImage(index)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setSelectedImage(index);
+                }
+              }}
+              style={{ cursor: "zoom-in" }}
+            >
 
-                <div className="alpha-exhibition-gallery-image">
+              <div className="alpha-exhibition-gallery-image">
 
-                  <Image
-                    src={image}
-                    alt={`${exhibition.name} highlight ${index + 1}`}
-                    fill
-                    sizes="100vw"
-                  />
+                <Image
+                  src={image}
+                  alt={`${exhibition.name} highlight ${index + 1}`}
+                  fill
+                  sizes="100vw"
+                />
 
-
-                  {/* IMAGE OVERLAY */}
-
-                  <div className="alpha-exhibition-gallery-overlay" />
-
-                </div>
+                <div className="alpha-exhibition-gallery-overlay" />
 
               </div>
 
-            )
-          )}
+            </div>
+
+          ))}
 
         </div>
 
-            {exhibition.highlights.length > 8 && (
-              <div className="alpha-exhibition-gallery-cta">
+        {/* VIEW MORE / SHOW LESS */}
+
+        {exhibition.highlights.length > 8 && (
+          <div className="alpha-exhibition-gallery-cta">
+
             <button
               type="button"
               className="hero-button hero-button-primary"
               onClick={() => setShowAllGalleryImages((current) => !current)}
               aria-expanded={showAllGalleryImages}
             >
-              <span>{showAllGalleryImages ? "SHOW LESS" : "READ MORE"}</span>
+              <span>
+                {showAllGalleryImages ? "SHOW LESS" : "VIEW MORE"}
+              </span>
               <ArrowRight size={20} />
             </button>
-          </div>
-            )}
-          </>
-        ) : (
-          <>
-            <div className="alpha-exhibition-video-grid" role="tabpanel" aria-label="Exhibition videos">
-              {(showAllGalleryVideos ? exhibition.videos : exhibition.videos.slice(0, 8)).map((video, index) => (
-                <div className="alpha-exhibition-video-card" key={`${video}-${index}`}>
-                  <video
-                    className="alpha-exhibition-video-item"
-                    controls
-                    playsInline
-                    preload="none"
-                  >
-                    <source src={video} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              ))}
-            </div>
 
-            {exhibition.videos.length > 8 && (
-              <div className="alpha-exhibition-gallery-cta">
-                <button
-                  type="button"
-                  className="hero-button hero-button-primary"
-                  onClick={() => setShowAllGalleryVideos((current) => !current)}
-                  aria-expanded={showAllGalleryVideos}
-                >
-                  <span>{showAllGalleryVideos ? "SHOW LESS" : "READ MORE"}</span>
-                  <ArrowRight size={20} />
-                </button>
-              </div>
-            )}
-          </>
+          </div>
         )}
 
       </section>

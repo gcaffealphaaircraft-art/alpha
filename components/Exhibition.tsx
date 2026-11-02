@@ -45,11 +45,11 @@ const exhibitionData: ExhibitionYear = {
      {
       title: "Marrakech Airshow",
       image:
-        "/Marrakech Airshow.webp",
+        "/Marrakech Airshow1.webp",
       location:
-        "Royal Moroccan Air Force Base. Marrakech. Morocco.",
+        "Royal Moroccan Air Force Base, Marrakech, Morocco.",
       address:
-        "Royal Moroccan Air Force Base. Marrakech. Morocco.",
+        "Royal Moroccan Air Force Base, Marrakech, Morocco.",
       date: "7–10 October 2026",
       description:
         "Alpha Aircraft Systems participated for the first time in Marrakech Airshow 2026, bringing its expertise in Aircraft APU Overhaul, Repair and Maintenance to the international aerospace community. ",
