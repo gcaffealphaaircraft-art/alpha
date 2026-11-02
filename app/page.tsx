@@ -13,6 +13,7 @@ import Marquee from "@/components/Marquee";
 import Facility from "@/components/Facility";
 import Footer from "@/components/Footer";
 import HomePopup from "@/components/HomePopup";
+import Celebration from "@/components/Celebration";
 
 export default function Home() {
   useEffect(() => {
@@ -53,6 +54,7 @@ export default function Home() {
           
         <Challenges />
         <HomePopup/>
+        <Celebration />
               </main>
 
       <Footer />
