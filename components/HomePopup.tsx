@@ -57,7 +57,7 @@ export default function HomePopup() {
         </button>
 
         <Image
-          src="/mro-europe-popup.jpg"
+          src="/Alpha Foundation Day (2-11-26) Post.webp"
           alt="Alpha Aircraft Systems at MRO Europe, Amsterdam, 28–29 October 2026"
           width={1080}
           height={1620}
