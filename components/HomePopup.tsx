@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import "./HomePopup.css";
 
 export default function HomePopup() {
@@ -57,21 +56,15 @@ export default function HomePopup() {
           &times;
         </button>
 
-        <Link
-          href="/31-years-of-alpha"
-          aria-label="Discover 31 years of Alpha"
-          className="home-popup-link"
-        >
-          <Image
-            src="/Alpha Foundation Day (2-11-26) .webp"
-            alt="Alpha Aircraft Systems at MRO Europe, Amsterdam, 28–29 October 2026"
-            width={1080}
-            height={1620}
-            priority
-            className="home-popup-image"
-            sizes="(max-width: 600px) 92vw, 480px"
-          />
-        </Link>
+        <Image
+          src="/Alpha Foundation Day (2-11-26) .webp"
+          alt="Alpha Aircraft Systems at MRO Europe, Amsterdam, 28–29 October 2026"
+          width={1080}
+          height={1620}
+          priority
+          className="home-popup-image"
+          sizes="(max-width: 600px) 92vw, 480px"
+        />
       </div>
     </div>
   );
