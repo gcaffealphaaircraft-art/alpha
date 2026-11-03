@@ -41,21 +41,21 @@ const exhibition = {
     "/Marrakech Airshow5.webp",
     "/Marrakech Airshow6.webp",
     "/Marrakech Airshow7.webp",
-     "/Marrakech Airshow15.webp",
+     "/marrakech-exhibition7.webp",
     "/Marrakech Airshow16.webp",
-    "/Marrakech Airshow17.webp",
+    "/marrakech-exhibition8.webp",
     "/Marrakech Airshow18.webp",
     "/Marrakech Airshow8.webp",
     "/Marrakech Airshow9.webp",
     
-    "/Marrakech Airshow11.webp",
-    "/Marrakech Airshow12.webp",
-     "/Marrakech Airshow3.webp",
-    "/Marrakech Airshow4.webp",
-    "/Marrakech Airshow14.webp",
+    "/marrakech-exhibition.webp",
+    "/marrakech-exhibition1.webp",
+     "/marrakech-exhibition2.webp",
+    "/marrakech-exhibition3.webp",
+    "/marrakech-exhibition4.webp",
     
-      "/Marrakech Airshow19.webp",
-    "/Marrakech Airshow20.webp",
+      "/marrakech-exhibition5.webp",
+    
     
   ],
 
