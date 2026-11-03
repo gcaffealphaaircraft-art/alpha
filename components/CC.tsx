@@ -29,16 +29,16 @@ const exhibition = {
 
   heroImage: "/hero.png",
 
-  aboutImage: "/Alpha Aircraft Systems at MRO Beer 2026-Istanbul.jpeg",
+  aboutImage: "/Alpha Aircraft Systems at MRO Beer 2026-Istanbul.webp",
 
   description:
     "MRO BEER gave Alpha Aircraft Systems the opportunity to connect with the aviation and MRO community across the Baltics and Eastern Europe. More than a platform for industry discussions, the event opened doors to new conversations, new relationships and a growing network within a region with tremendous aviation potential. We are grateful for the connections, insights and experiences that made MRO BEER a meaningful part of our journey, and we look forward to building on these relationships in the times ahead.",
 
   highlights: [
     
-    "/Alpha Aircraft Systems at MRO Beer 2026.jpeg",
+    "/Alpha Aircraft Systems at MRO Beer 2026.webp",
    
-    "/Alpha Aircraft Systems at MROBEER.jpeg",
+    "/Alpha Aircraft Systems at MROBEER.webp",
   ],
 
   video: "/Alpha-Aircraft-Systems-Facility-at-Hialeah.mp4", // CTA background video
