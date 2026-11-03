@@ -420,7 +420,7 @@ export default function ExhibitionPage() {
             scroll-snap-stop: always;
           }
           .alpha-exhibition-gallery-item:hover { transform: none; }
-          .alpha-exhibition-gallery-cta { margin-top: 22px; }
+          .alpha-exhibition-gallery-cta { display: none; }
         }
       `}</style>
       <main

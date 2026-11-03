@@ -14,7 +14,7 @@ import styles from "./page.module.css";
 
 const stories = [
   {
-    image: "/Alpha-exhibition-in-london-scaled.jpg",
+    image: "/Cam (47).webp",
     heading: "From Right to Left",
     description:
       "Ms. Shimoni A. from Agiaerospace, Mr. Ajay Agarwal from Avis Ventures & Business Aviation, Mr. Israel Leppe, Mr. Shubhesh Thakore and Mr. Cesar Leppe from Alpha Aircraft Systems.",

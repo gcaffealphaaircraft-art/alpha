@@ -457,7 +457,7 @@ export default function ExhibitionPage() {
           }
 
           .alpha-exhibition-gallery-cta {
-            margin-top: 22px;
+            display: none;
           }
 
         }
