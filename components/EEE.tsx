@@ -29,7 +29,7 @@ const exhibition = {
 
   heroImage: "/hero.png",
 
-  aboutImage: "/Marrakech Airshow1.webp",
+  aboutImage: "/marrakech-exhibition3.webp",
 
   description:
     "Alpha Aircraft Systems participated for the first time in Marrakech Airshow 2026, bringing its expertise in Aircraft APU Overhaul, Repair and Maintenance to the moroccan aerospace community. At Booth M8, our team connected with aviation professionals, industry leaders and potential partners to explore new opportunities and strengthen relationships across the African and global aviation markets.",

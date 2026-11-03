@@ -35431,9 +35431,17 @@ padding-left:10px;
     width: 55%;
   }
 }
-
+.facility-image {
+    object-fit: unset !important;
+}
 /* Mobile */
-
+@media (max-width: 767px) {.page_coverImage__V7Cx_ {
+    object-fit: unset !important;
+}
+}
+@media (max-width: 767px) {.facility-image {
+    object-fit: unset !important;
+}}
 @media (max-width: 767px) {
   .site-footer {
     padding: 80px 14px 20px;
