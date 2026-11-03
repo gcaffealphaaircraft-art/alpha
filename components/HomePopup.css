@@ -29,6 +29,10 @@
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
 }
 
+.home-popup-link {
+  display: block;
+}
+
 .home-popup-close {
   position: absolute;
   top: -14px;
