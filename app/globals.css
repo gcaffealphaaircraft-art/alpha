@@ -35435,6 +35435,21 @@ padding-left:10px;
     object-fit: unset !important;
 }
 /* Mobile */
+@media (max-width: 767px) {.jsx-7fc4e1d38c927bd4.hero-button.hero-button-primary {
+    display: none !important;
+}}
+@media (max-width: 767px) {.alpha-exhibition-highlights-heading {
+    position: relative;
+    width: min(1400px, calc(100% - 64px));
+    margin: 0 auto 0px !important;
+    padding-left: 0;
+    border-left: 0;
+}}
+@media (max-width: 767px) {
+    .alpha-exhibition-highlights {
+        padding: 48px 0 15px !important;
+    }
+}
 @media (max-width: 767px) {.page_coverImage__V7Cx_ {
     object-fit: unset !important;
 }
