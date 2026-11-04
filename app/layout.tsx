@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script id="zoho-salesiq-init" strategy="afterInteractive">
+          {`window.$zoho = window.$zoho || {};
+window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };`}
+        </Script>
+        <Script
+          id="zsiqscript"
+          src="https://salesiq.zohopublic.in/widget?wc=siqf867f4069cbe2e7980e0502f5be57ebae143f994ff08f9ef885e18913bd45667113b1ef7841ff72c9370586c28750dee"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
