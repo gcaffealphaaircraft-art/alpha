@@ -36,7 +36,7 @@ const exhibition = {
 
   highlights: [
     
-     "/Alpha-exhibition-in-london-scaled.JPG",
+  
     "/Alpha-Exhibition-scaled.jpg",
     "/Alpha-in-London-1-scaled.jpg",
     "/London-Exhibition-of-Alpha-1-scaled.jpg",
