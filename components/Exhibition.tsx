@@ -296,7 +296,7 @@ const exhibitionData: ExhibitionYear = {
         "The first exhibition of 2025 that too in Miami. It was brilliant! We had bouquet of offerings for maintenance and overhauling of APUs and aircraft accessories.",
 
       ctaUrl:
-        "/pb-expo-2025",
+        "/exhibition-pb-expo-2025",
 
       ctaText: "EXPLORE",
     },
