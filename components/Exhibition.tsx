@@ -230,7 +230,7 @@ const exhibitionData: ExhibitionYear = {
     },
 
     {
-      title: "Aero India",
+      title: "Aero Engines",
       image:
         "/Alpha-Aircraft-Systems-at-Aero-Engines-Hamburg-Germany.jpg",
       location:
