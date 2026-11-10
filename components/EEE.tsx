@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   CalendarDays,
+  Home,
   MapPin,
   X,
   ChevronLeft,
@@ -26,6 +27,8 @@ const exhibition = {
   date: "7–10 October 2026",
 
   location: "Royal Moroccan Air Force Base, Marrakech, Morocco.",
+
+booth: "Booth M8",
 
   heroImage: "/hero.png",
 
@@ -504,6 +507,26 @@ export default function ExhibitionPage() {
 
               <span>
                 {exhibition.date}
+              </span>
+
+            </div>
+
+
+            {/* BOOTH */}
+
+            <div className="alpha-exhibition-info-row">
+
+              <div className="alpha-exhibition-info-icon">
+
+                <Home
+                  size={25}
+                  strokeWidth={1.7}
+                />
+
+              </div>
+
+              <span>
+                {exhibition.booth}
               </span>
 
             </div>
