@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "PB Expo 2024",
 
-  date: "7-8 March, 2024",
+  date: "7 – 8 March 2024",
 
   location: "Miami Beach Convention Center, Florida",
 

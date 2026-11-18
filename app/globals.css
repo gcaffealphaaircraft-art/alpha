@@ -6697,6 +6697,11 @@ section.what-if-sectionss {
   text-transform: uppercase;
 }
 
+section.what-if-sectionss .what-if-heading h2,
+section.what-if-sectionss .what-if-heading .what-if-char {
+  color: #082b4c;
+}
+
 .what-if-line {
   display: block;
 
@@ -6779,9 +6784,67 @@ section.what-if-sectionss {
 
   border-radius: 29px;
 
-  background: #080808;
+  background: #eef1f2;
 
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(8,43,76,.12);
+}
+
+.what-if-card-inner.what-if-card-1 {
+  background: #ffffff !important;
+}
+
+.what-if-card-inner.what-if-card-2,
+.what-if-card-inner.what-if-card-3,
+.what-if-card-inner.what-if-card-4 {
+  background: #ffffff !important;
+}
+
+.what-if-card-inner.what-if-card-5 {
+  background: #ffffff !important;
+}
+
+section.what-if-sectionss .what-if-card-1,
+section.what-if-sectionss .what-if-card-5 {
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+section.what-if-sectionss .what-if-card-1 {
+  background: #ffffff !important;
+}
+
+section.what-if-sectionss .what-if-card-5 {
+  background: #ffffff !important;
+}
+
+section.what-if-sectionss .what-if-overlay {
+  background:
+    linear-gradient(
+      to top,
+      rgba(4, 10, 15, 0.58) 0%,
+      rgba(4, 10, 15, 0.20) 42%,
+      rgba(4, 10, 15, 0.12) 68%,
+      rgba(4, 10, 15, 0.36) 100%
+    );
+}
+
+section.what-if-sectionss .what-if-box {
+  padding-top: 120px;
+  overflow: visible;
+}
+
+section.what-if-sectionss .what-if-heading {
+  position: relative;
+  z-index: 20;
+  margin-bottom: 35px;
+  overflow: visible;
+}
+
+section.what-if-sectionss .what-if-heading h2,
+section.what-if-sectionss .what-if-heading .what-if-char {
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #082b4c;
 }
 
 
@@ -6792,13 +6855,14 @@ section.what-if-sectionss {
 .what-if-image {
   position: absolute;
 
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
 
-  left: -5%;
-  top: -5%;
+  left: 0;
+  top: 0;
 
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 
   will-change:
     transform;
@@ -9011,6 +9075,10 @@ display: none !important;
           transition:
             gap 0.3s ease,
             opacity 0.3s ease;
+        }
+
+        section.what-if-sectionss .what-if-download-cta {
+          color: #fff;
         }
 
         .what-if-download-cta:hover {
@@ -12124,9 +12192,8 @@ html {
   font-size: 21px;
 
   line-height: 1.7;
-
-  
 }
+
 
 
 /* =========================================
@@ -26268,12 +26335,9 @@ body {
 
 .expo-recent-meta {
   display: flex;
-
-  align-items: center;
-
-  flex-wrap: wrap;
-
-  gap: 23px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 
   margin-bottom: 34px;
 
@@ -27533,8 +27597,9 @@ padding-left:10px;
 
 .expo-recent-meta {
   display: flex;
-  gap: 14px;
-  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
 
   margin-bottom: 30px;
 
@@ -27544,7 +27609,7 @@ padding-left:10px;
 }
 
 .expo-meta-divider {
-  color: #b84a2b;
+  display: none;
 }
 
 .expo-recent-description {
@@ -27857,6 +27922,17 @@ padding-left:10px;
 
   font-size: 16px;
   line-height: 1.5;
+}
+
+.expo-hover-meta-row > span:last-child,
+.expo-recent-meta span {
+  white-space: pre-line;
+}
+
+.expo-hover-meta-row:first-child > span:last-child,
+.expo-recent-meta span:first-child,
+.exhibition-home-section .exhibition-meta span:first-child {
+  white-space: pre-line;
 }
 
 .expo-meta-icon {
@@ -34615,8 +34691,9 @@ padding-left:10px;
     linear-gradient(
       to top,
       rgba(4, 10, 15, 0.96) 0%,
-      
-      rgba(4, 10, 15, 0.10) 75%
+      rgba(4, 10, 15, 0.34) 42%,
+      rgba(4, 10, 15, 0.22) 62%,
+      rgba(4, 10, 15, 0.68) 100%
     );
 
   transition:
@@ -35398,7 +35475,10 @@ padding-left:10px;
   pointer-events: none;
 }
 
-
+p.what-if-main-text{
+  color: #fff;
+  font-weight:600;
+}
 
 .footer-hanging-spider img {
   width: 105px;
@@ -35654,4 +35734,68 @@ padding-left:10px;
     color: #d4e1eb !important;
     font-size: 15px;
     line-height: 1.75;
+}
+
+/* Always-visible exhibition CTAs */
+.exhibition-intro .hero-button-primary {
+  display: inline-flex;
+  width: max-content;
+  min-width: 230px;
+  min-height: 58px;
+  margin: 24px 0 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 0 24px;
+  background: #b84a2b;
+  border: 1px solid #b84a2b;
+  border-radius: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 1;
+  visibility: visible;
+  text-decoration: none;
+}
+
+.exhibition-intro .hero-button-primary:hover {
+  background: transparent;
+  color: #b84a2b;
+  border-color: #b84a2b;
+}
+
+.exhibition-card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 150px;
+  min-height: 52px;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-decoration: none;
+}
+
+.exhibition-home-section .exhibition-meta {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.exhibition-home-section .exhibition-meta span + span::before {
+  content: none;
+}
+
+.exhibition-home-section .exhibition-meta span {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.35;
+}
+
+.exhibition-home-section .exhibition-meta svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #e54b32;
 }

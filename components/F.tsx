@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "PB Expo 2025",
 
-  date: "27-28 Feb, 2025",
+  date: "27 – 28 February 2025",
 
   location: "Miami Beach Convention Center, Florida",
 

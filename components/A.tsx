@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO XPO India",
 
-  date: "11-12 March, 2026",
+  date: "11 – 12 March 2026",
 
   location: "IICC, Dwarka, New Delhi",
 

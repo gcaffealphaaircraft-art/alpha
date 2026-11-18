@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO Europe",
 
-  date: "18-19 Oct, 2023",
+  date: "18 – 19 October 2023",
 
   location: "RAI, Amsterdam, Netherlands",
 

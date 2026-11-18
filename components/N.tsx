@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO Europe",
 
-  date: "15-16 October, 2025",
+  date: "15 – 16 October 2025",
 
   location: "Excel London, London",
 

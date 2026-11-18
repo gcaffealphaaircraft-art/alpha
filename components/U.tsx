@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "Aero Engines",
 
-  date: "9-10 September, 2025",
+  date: "9 – 10 September 2025",
 
   location: "CCH Congress Center, Hamburg Germany",
 

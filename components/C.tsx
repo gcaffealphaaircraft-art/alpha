@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "Wings India",
 
-  date: "28-31 January, 2026",
+  date: "28 – 31 January 2026",
 
   location: "Begumpet Airport, Hyderabad",
 

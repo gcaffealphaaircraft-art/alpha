@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "ALTA CCMA & MRO Conference",
 
-  date: "21-23 May, 2023",
+  date: "21 – 23 May 2023",
 
   location: "Hilton, Cancun, Mexico",
 

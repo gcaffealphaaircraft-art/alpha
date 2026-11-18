@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO Middle East",
 
-  date: "2-3 February, 2026",
+  date: "2 – 3 February 2026",
 
   location: "Dubai World Trade Centre, UAE",
 

@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO Americas",
 
-  date: "18-20 April, 2023",
+  date: "18 – 20 April 2023",
 
   location: "Georgia World Congress, Atlanta, Georgia, USA",
 

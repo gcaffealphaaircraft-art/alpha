@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "AVIATION AFRICA",
 
-  date: "September 9–10, 2026",
+  date: "9 – 10 September 2026",
 booth: "Stand 59",
   location: "Sarit Expo Centre in Nairobi, Kenya",
 

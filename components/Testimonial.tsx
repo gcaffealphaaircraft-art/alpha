@@ -27,6 +27,7 @@ type CertificateCard = {
   cta: string;
   image: string;
   pdf: string;
+  background: string;
 };
 
 /* =========================================================
@@ -40,6 +41,7 @@ const cardsData: CertificateCard[] = [
     cta: "DOWNLOAD",
     image: "/FAMO-Certificate.webp",
     pdf: "/FAMO-Certificate.pdf",
+    background: "#ffffff",
   },
   {
     id: 2,
@@ -47,6 +49,7 @@ const cardsData: CertificateCard[] = [
     cta: "DOWNLOAD",
     image: "/FAA-Approved.webp",
     pdf: "/FAA-Approved.pdf",
+    background: "#ffffff",
   },
   {
     id: 3,
@@ -54,6 +57,7 @@ const cardsData: CertificateCard[] = [
     cta: "DOWNLOAD",
     image: "/EASA-Approved.webp",
     pdf: "/EASA-Approved.pdf",
+    background: "#ffffff",
   },
   {
     id: 4,
@@ -61,6 +65,7 @@ const cardsData: CertificateCard[] = [
     cta: "DOWNLOAD",
     image: "/Certificate-of-Registration.webp",
     pdf: "/Certificate-of-Registration.pdf",
+    background: "#ffffff",
   },
   {
     id: 5,
@@ -68,6 +73,7 @@ const cardsData: CertificateCard[] = [
     cta: "DOWNLOAD",
     image: "/ISO-Certificate.webp",
     pdf: "/ISO-Certificate-1.pdf",
+    background: "#ffffff",
   },
 ];
 
@@ -161,10 +167,8 @@ export default function WhatIfSection() {
           if (!image) return;
 
           gsap.to(image, {
-            scale:
-              i === index ? 1.08 : 1,
-            yPercent:
-              i === index ? -4 : 0,
+            scale: 1,
+            yPercent: 0,
             duration: animate ? 1.2 : 0,
             ease: "power3.out",
             overwrite: true,
@@ -569,7 +573,13 @@ export default function WhatIfSection() {
                       }`}
                     >
 
-                      <div className="what-if-card-inner">
+                      <div
+                        className={`what-if-card-inner what-if-card-${card.id}`}
+                        style={{
+                          background:
+                            card.background,
+                        }}
+                      >
 
                         {/* =================================
                             IMAGE

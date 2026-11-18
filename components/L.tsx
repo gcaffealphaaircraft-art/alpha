@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO Europe",
 
-  date: "22-24 Oct, 2024",
+  date: "22 – 24 October 2024",
 
   location: "Fira, Barcelona, Spain",
 

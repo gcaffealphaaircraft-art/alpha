@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "C-130 TCG",
 
-  date: "28 Oct-01 Nov, 2024",
+  date: "28 October – 1 November 2024",
 
   location: "Caribe Royale Hotel and Convention Center, Orlando, Florida",
 

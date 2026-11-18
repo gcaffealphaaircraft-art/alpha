@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "World Defense Show",
 
-  date: "09-10 February , 2025",
+  date: "9 – 10 February 2025",
 
   location: "Riyadh International Convention and Exhibition Center",
 

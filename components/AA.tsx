@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "PB EXPO",
 
-  date: "March 11–12, 2026",
+  date: "11 – 12 March 2026",
 
   location: "Miami Beach Convention Center",
 

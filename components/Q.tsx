@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "HAI Heli Expo",
 
-  date: "27-29 Feb, 2024",
+  date: "27 – 29 February 2024",
 
   location: "Anaheim Convention Center, Anaheim, California",
 

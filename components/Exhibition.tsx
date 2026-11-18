@@ -30,6 +30,18 @@ type ExhibitionYear = {
   [year: number]: ExhibitionItem[];
 };
 
+const removeAddressDot = (
+  value: string
+): string =>
+  value.trim().replace(/[.,;]+\s*$/, "");
+
+const formatExhibitionDate = (
+  value: string
+): string =>
+  value
+    .replace(/\s*[–-]\s*/g, " – ")
+    .replace(/,\s*(?=\d{4})/g, " ");
+
 
 /* =========================================================
    EXHIBITION DATA
@@ -47,9 +59,9 @@ const exhibitionData: ExhibitionYear = {
       image:
         "/marrakech-exhibition3.webp",
       location:
-        "Royal Moroccan Air Force Base, Marrakech, Morocco.",
+        "Royal Moroccan Air Force Base, Marrakech, Morocco",
       address:
-        "Royal Moroccan Air Force Base, Marrakech, Morocco.",
+        "Royal Moroccan Air Force Base\nMarrakech, Morocco",
       date: "7–10 October 2026",
       description:
         "Alpha Aircraft Systems participated for the first time in Marrakech Airshow 2026, bringing its expertise in Aircraft APU Overhaul, Repair and Maintenance to the international aerospace community. ",
@@ -65,7 +77,7 @@ const exhibitionData: ExhibitionYear = {
       location: "Singapore EXPO, Singapore",
       address:
         "Singapore EXPO, Singapore",
-      date: "September 22–24, 2026",
+      date: "22–24 September 2026",
       description:
         "The energy across the exhibition floor at MRO Asia-Pacific was exceptional. Beyond discussing the latest advancements in aircraft systems, maintenance, and fleet reliability, the highlight of our time in Singapore was reconnecting with long-time industry friends, partners, and colleagues from across the Asia-Pacific region.",
 
@@ -79,7 +91,7 @@ const exhibitionData: ExhibitionYear = {
       location: "Sarit Expo Centre in Nairobi, Kenya",
       address:
         "Sarit Expo Centre in Nairobi, Kenya ",
-      date: "September 9–10, 2026",
+      date: "9–10 September 2026",
       description:
         "Aviation AFRICA 2026 was a memorable experience for Alpha Aircraft Systems. From our Stand 59 at the Sarit Expo Centre in Nairobi, we had the opportunity to meet aviation professionals from across Africa and beyond, reconnect with old friends and build new relationships within the region’s growing aviation community.",
 
@@ -95,7 +107,7 @@ const exhibitionData: ExhibitionYear = {
       location: "Istanbul, Turkey (hosted at the Istanbul Lutfi Kirdar International Convention and Exhibition Center)",
       address:
         "Istanbul Lutfi Kirdar International Convention and Exhibition Center",
-      date: "June 17–18, 2026",
+      date: "17–18 June 2026",
       description:
         "MRO BEER gave Alpha Aircraft Systems the opportunity to connect with the aviation and MRO community across the Baltics and Eastern Europe. More than a platform for industry discussions, the event opened doors to new conversations, new relationships and a growing network within a region with tremendous aviation potential.",
 
@@ -109,8 +121,8 @@ const exhibitionData: ExhibitionYear = {
         "/MRO South East_Asia.jpeg",
       location: "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
       address:
-        "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
-      date: "May 13–14, 2026",
+        "Hilton Kuala Lumpur\nKuala Lumpur, Malaysia",
+      date: "13–14 May 2026",
       description:
         "MRO Southeast Asia in Kuala Lumpur gave Alpha Aircraft Systems another valuable opportunity to connect with the region’s aviation and MRO community.",
 
@@ -125,7 +137,7 @@ const exhibitionData: ExhibitionYear = {
       location: "Miami Beach Convention Center",
       address:
         "Miami Beach Convention Center",
-      date: "March 11–12, 2026",
+      date: "11–12 March 2026",
       description:
         "PB Expo 2026 brought together the aviation community to explore the technologies and ideas shaping the future of the industry.",
 
@@ -140,7 +152,7 @@ const exhibitionData: ExhibitionYear = {
       location: "ICC, Dwarka, New Delhi",
       address:
         "India International Convention & Expo Centre, Dwarka, New Delhi, India",
-      date: "11–12 March, 2026",
+      date: "11–12 March 2026",
       description:
         "Glimpses from MRO XPO India, where leaders and professionals from across the Indian aviation and MRO industry came together to exchange ideas, build partnerships, and explore the future of aircraft maintenance and support.",
 
@@ -157,7 +169,7 @@ const exhibitionData: ExhibitionYear = {
         "Riyadh International Convention and Exhibition Center",
       address:
         "Riyadh International Convention and Exhibition Center",
-      date: "09-10 February, 2025",
+      date: "9–10 February 2026",
       description:
         "Extending a sincere appreciation to the aviation professionals who took the time to connect with us at the World Defense Show, Riyadh. Mr. Shubhesh Thakore from Alpha Aircraft Systems had the opportunity to engage in meaningful conversations with Harab Alharabi, Ron Taylo and Amyr Qureshi.",
 
@@ -175,7 +187,7 @@ const exhibitionData: ExhibitionYear = {
         "Dubai World Trade Centre, UAE",
       address:
         "Dubai World Trade Centre, UAE",
-      date: "2-3 February, 2026",
+      date: "2–3 February 2026",
       description:
         "A valuable exchange of insights and perspectives at MRO Middle East, Dubai. It was a privilege to engage with the global MRO community and be part of conversations shaping the future of aircraft maintenance and support worldwide.",
 
@@ -193,7 +205,7 @@ const exhibitionData: ExhibitionYear = {
         "Begumpet Airport, Hyderabad",
       address:
         "Begumpet Airport, Hyderabad",
-      date: "28-31 January, 2026",
+      date: "28–31 January 2026",
       description:
         "Grateful for the conversations, insights, and collaborations at Wings India 2026. Our first aviation event of the year, it was a privilege to engage with the ecosystem shaping the future of Indian aviation and aerospace growth.",
 
@@ -219,7 +231,7 @@ const exhibitionData: ExhibitionYear = {
         "Excel London, London",
       address:
         "Excel London, London",
-      date: "15-16 Oct, 2025",
+      date: "15–16 October 2025",
       description:
         "Grateful for the connections, ideas, and innovations at AeroEngines Europe. It is always great to be part of the conversations shaping the future of aviation.",
 
@@ -237,7 +249,7 @@ const exhibitionData: ExhibitionYear = {
         "Bengaluru, India",
       address:
         "Air Force Station Yelahanka, Bengaluru, Karnataka, India",
-      date: "2025",
+      date: "9-10 September, 2025",
       description:
         "Exploring aerospace technologies and building meaningful industry connections.",
 
@@ -255,7 +267,7 @@ const exhibitionData: ExhibitionYear = {
         "Le Bourget, Pairs",
       address:
         "Le Bourget, Pairs",
-      date: "16-22 June, 2025",
+      date: "16–22 June 2025",
       description:
         "International Pairs Air Show will be remembered as a milestone. It was in this event that we signed an agreement with RSR Aviation Services to establish an APU facility in India by second quarter of 2026. This will make our presence in Asia-Pacific stronger.",
 
@@ -273,7 +285,7 @@ const exhibitionData: ExhibitionYear = {
         "Palexpo Convention Centre, Geneva, Switzerland",
       address:
         "Palexpo Convention Centre, Geneva, Switzerland",
-      date: "20-22 May, 2025",
+      date: "20–22 May 2025",
       description:
         "It was our first participation in EBACE and the aviation community gripped us. It was an awesome event. EBACE landed us to new markets and provided us valued connections.",
 
@@ -291,7 +303,7 @@ const exhibitionData: ExhibitionYear = {
         "Miami Beach Convention Center, Florida",
       address:
         "Miami Beach Convention Center, Florida",
-      date: "27-28 Feb, 2025",
+      date: "27–28 February 2025",
       description:
         "The first exhibition of 2025 that too in Miami. It was brilliant! We had bouquet of offerings for maintenance and overhauling of APUs and aircraft accessories.",
 
@@ -317,7 +329,7 @@ const exhibitionData: ExhibitionYear = {
         "Changi Exhibition Centre, Singapore",
       address:
         "Changi Exhibition Centre, Singapore",
-      date: "20-25 Feb, 2024",
+      date: "20–25 February 2024",
       description:
         "Singapore Airshow was our first grand exhibition of the year. We had an exclusive coverage of the show and witnessed the grandeur and innovations of the aviation industry.",
 
@@ -335,7 +347,7 @@ const exhibitionData: ExhibitionYear = {
         "Anaheim Convention Center, Anaheim, California",
       address:
         "Anaheim Convention Center, Anaheim, California",
-      date: "27-29 Feb, 2024",
+      date: "27–29 February 2024",
       description:
         "It was for the first time that we participated in a helicopter expo. HAI Heli Expo set the stage for our entry into Helicopter APU MRO services.",
 
@@ -353,7 +365,7 @@ const exhibitionData: ExhibitionYear = {
         "Dubai World Trade Center",
       address:
         "Dubai World Trade Center",
-      date: "5-6 March, 2024",
+      date: "5–6 March 2024",
       description:
         "MRO Middle East provided us a platform to drive collaboration and new commercial opportunities, discover the latest trends and explore innovative solutions.",
 
@@ -371,7 +383,7 @@ const exhibitionData: ExhibitionYear = {
         "Miami Beach Convention Center, Florida",
       address:
         "Miami Beach Convention Center, Florida",
-      date: "7-8 March, 2024",
+      date: "7–8 March 2024",
       description:
         "At the PB Expo, our focus was on making the right connections and meet some of aviation’s finest personnels. The attendees loved our exhibition.",
 
@@ -389,7 +401,7 @@ const exhibitionData: ExhibitionYear = {
         "Singapore Expo, Singapore",
       address:
         "Singapore Expo, Singapore",
-      date: "25-26 Sep, 2024",
+      date: "25–26 September 2024",
       description:
         "After Singapore Airshow in February, we headed back to Singapore in the month of September to showcase our APU maintenance capabilities. We signed MoU with Aviaris Pte. Ltd. which was a strategic agreement to increase bandwidth of each other’s business and deepen our roots in Asia-Pacific.",
 
@@ -407,7 +419,7 @@ const exhibitionData: ExhibitionYear = {
         "Fira, Barcelona, Spain",
       address:
         "Fira, Barcelona, Spain",
-      date: "22-24 Oct, 2024",
+      date: "22–24 October 2024",
       description:
         "We attended MRO Europe to expand our business in Europe and shared our expertise as leading APU expert and learnt about their technologies.",
 
@@ -425,7 +437,7 @@ const exhibitionData: ExhibitionYear = {
         "Caribe Royale Hotel and Convention Center, Orlando, Florida",
       address:
         "Caribe Royale Hotel and Convention Center, Orlando, Florida",
-      date: "28 Oct-01 Nov, 2024",
+      date: "28 October – 1 November 2024",
       description:
         "Grateful to have attended the 34th World Wide Review organised by the Technical Coordination Group (TCG) that gave us in-depth information about improved technologies in C-130 aircraft and helped us to brush our expertise in APU overhauling and maintenance of C-130 aircraft.",
 
@@ -451,7 +463,7 @@ const exhibitionData: ExhibitionYear = {
         "Orlando, Florida",
       address:
         "Orlando, Florida",
-      date: "24 October, 2023",
+      date: "24 October 2023",
       description:
         "We are experts in overhauling C-130 aircraft APU and therefore we always look forward to participating in TCG (Technical Coordination Group).",
 
@@ -469,7 +481,7 @@ const exhibitionData: ExhibitionYear = {
         "RAI, Amsterdam, Netherlands",
       address:
         "RAI, Amsterdam, Netherlands",
-      date: "18-19 Oct, 2023",
+      date: "18–19 October 2023",
       description:
         "As the leading experts in APU Overhaul, Maintenance and Repair, we showcased our top-notch technologies at MRO Europe in Amsterdam.",
 
@@ -487,7 +499,7 @@ const exhibitionData: ExhibitionYear = {
         "Georgia World Congress, Atlanta, Georgia, USA",
       address:
         "Georgia World Congress, Atlanta, Georgia, USA",
-      date: "18-20 April, 2023",
+      date: "18–20 April 2023",
       description:
         "We proudly participated in MRO Americas in Atlanta, showcasing quality APU Components and best Military Maintenance Facility of Alpha Aircraft Systems.",
 
@@ -505,7 +517,7 @@ const exhibitionData: ExhibitionYear = {
         "Hilton, Cancun, Mexico",
       address:
         "Hilton, Cancun, Mexico",
-      date: "21-23 May, 2023",
+      date: "21–23 May 2023",
       description:
         "Demonstrating at the ALTA CCMA & MRO Conference was important for us as it is the premier and longest-standing conference in Latin America and the Caribbean for aviation Maintenance and Technical Purchasing.",
 
@@ -523,7 +535,7 @@ const exhibitionData: ExhibitionYear = {
         "Dubai World Trade Centre, UAE",
       address:
         "Dubai World Trade Centre, UAE",
-      date: "1-2 March, 2023",
+      date: "1–2 March 2023",
       description:
         "Glimpses of the MRO show at Dubai World Trade Centre: An initiative from our side to give an opportunity to those who want to fly high and achieve their goals.",
 
@@ -872,7 +884,12 @@ export default function Exhibition() {
               <div className="expo-recent-meta">
 
                 <span>
-                  {currentRecent?.location}
+                  {currentRecent
+                    ? removeAddressDot(
+                        currentRecent.address ||
+                          currentRecent.location
+                      )
+                    : ""}
                 </span>
 
 
@@ -882,7 +899,11 @@ export default function Exhibition() {
 
 
                 <span>
-                  {currentRecent?.date}
+                  {currentRecent
+                    ? formatExhibitionDate(
+                        currentRecent.date
+                      )
+                    : ""}
                 </span>
 
               </div>
@@ -1123,10 +1144,10 @@ export default function Exhibition() {
 
 
                               <span>
-
-                                {exhibition.address ||
-                                  exhibition.location}
-
+                                {removeAddressDot(
+                                  exhibition.address ||
+                                    exhibition.location
+                                )}
                               </span>
 
                             </div>
@@ -1184,7 +1205,9 @@ export default function Exhibition() {
 
 
                               <span>
-                                {exhibition.date}
+                                {formatExhibitionDate(
+                                  exhibition.date
+                                )}
                               </span>
 
                             </div>

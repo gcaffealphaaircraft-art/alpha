@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO SOUTH EAST ASIA",
 
-  date: "May 13–14, 2026",
+  date: "13 – 14 May 2026",
 
   location: "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
 

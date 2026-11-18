@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO Asia-Pacific",
 
-  date: "25-26 Sep, 2024",
+  date: "25 – 26 September 2024",
 
   location: "Singapore Expo, Singapore",
 

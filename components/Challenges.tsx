@@ -12,6 +12,8 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  CalendarDays,
+  MapPin,
 } from "lucide-react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,6 +24,13 @@ import "swiper/css/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const formatExhibitionDate = (
+  value: string
+): string =>
+  value
+    .replace(/\s*[–-]\s*/g, " – ")
+    .replace(/,\s*(?=\d{4})/g, " ");
+
 /* =========================================================
    EXHIBITION DATA
 ========================================================= */
@@ -29,8 +38,8 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibitions = [
    {
     name: "Marrakech Airshow",
-    location: "Royal Moroccan Air Force Base, Marrakech, Morocco.",
-    date: "7–10 October 2026",
+    location: "Royal Moroccan Air Force Base\nMarrakech, Morocco",
+     date: "7–10 October 2026",
     image: "/marrakech-exhibition3.webp",
     cta: "EXPLORE",
     link: "/marrakech-airshow",
@@ -38,7 +47,7 @@ const exhibitions = [
   {
     name: "MRO Asia Pacific",
     location: "Singapore EXPO, Singapore",
-    date: "September 22–24, 2026",
+    date: "22–24 September 2026",
     image: "/Alpha Aircraft Systems at MRO Asia Pacific Singapore (2).jpeg",
     cta: "EXPLORE",
     link: "/mro-asia-pacific",
@@ -46,7 +55,7 @@ const exhibitions = [
   {
     name: "Aviation Africa",
     location: "Sarit Expo Centre in Nairobi, Kenya",
-    date: "September 9–10, 2026",
+    date: "9–10 September 2026",
     image: "/Aviation Africa11.webp",
     cta: "EXPLORE",
     link: "/aviation-africa",
@@ -54,7 +63,7 @@ const exhibitions = [
   {
     name: "MRO Beer",
     location: "Istanbul Lutfi Kirdar International Convention and Exhibition Center",
-    date: "June 17–18, 2026",
+    date: "17–18 June 2026",
     image: "/Alpha Aircraft Systems at MRO Beer 2026.jpeg",
     cta: "EXPLORE",
     link: "/mro-beer",
@@ -63,7 +72,7 @@ const exhibitions = [
   {
     name: "MRO South East Asia",
     location: "Hilton Kuala Lumpur, Kuala Lumpur, Malaysia",
-    date: "May 13–14, 2026",
+    date: "13–14 May 2026",
     image: "/MRO South East_Asia.jpeg",
     cta: "EXPLORE",
     link: "/exhibition-mro-south-east-asia",
@@ -71,7 +80,7 @@ const exhibitions = [
   {
     name: "PB Expo",
     location: "Miami Beach Convention Center",
-    date: "March 11–12, 2026",
+    date: "11–12 March 2026",
     image: "/Alpha Aircraft Systems at PB Expo 2026 (2).jpeg",
     cta: "EXPLORE",
     link: "/pbexpo",
@@ -79,7 +88,7 @@ const exhibitions = [
   {
     name: "MRO XPO India",
     location: "MRO XPO India",
-    date: "March 11-12, 2026",
+    date: "11–12 March 2026",
     image: "/MRO.webp",
     cta: "EXPLORE",
     link: "/mro-xpo-india",
@@ -89,7 +98,7 @@ const exhibitions = [
     name: "World Defense Show",
     location:
       "Riyadh International Convention & Exhibition Center",
-    date: "February 09-10, 2026",
+    date: "9–10 February 2026",
     image: "/MRO2.webp",
     cta: "EXPLORE",
     link: "/exhibition-world-defense-show",
@@ -99,7 +108,7 @@ const exhibitions = [
     name: "MRO Middle East",
     location:
       "Dubai World Trade Centre, UAE",
-    date: "2-3 February, 2026",
+    date: "2–3 February 2026",
     image: "/MRO3.webp",
     cta: "EXPLORE",
     link: "/exhibition-mro-middle-east-2026",
@@ -109,7 +118,7 @@ const exhibitions = [
     name: "Wings India",
     location:
       "Begumpet Airport, Hyderabad",
-    date: "28-31 January, 2026",
+    date: "28–31 January 2026",
     image: "/MRO4.webp",
     cta: "EXPLORE",
     link: "/exhibition-wings-india",
@@ -216,8 +225,8 @@ export default function Exhibitions() {
         });
 
         gsap.set(button, {
-          y: 15,
-          opacity: 0,
+          y: 0,
+          opacity: 1,
         });
 
         /* ===============================================
@@ -339,8 +348,8 @@ export default function Exhibitions() {
           tl.to(
             button,
             {
-              y: 15,
-              opacity: 0,
+              y: 0,
+              opacity: 1,
               duration: 0.3,
               ease: "power3.inOut",
             },
@@ -372,7 +381,7 @@ export default function Exhibitions() {
   return (
     <section
       ref={sectionRef}
-      className="exhibition-section"
+      className="exhibition-section exhibition-home-section"
     >
       {/* =================================================
           LEFT CONTENT
@@ -416,8 +425,8 @@ export default function Exhibitions() {
             </span>
 
             <ArrowUpRight
-              size={16}
-              strokeWidth={1.8}
+              size={28}
+              strokeWidth={2.2}
             />
           </Link>
         </p>
@@ -516,11 +525,23 @@ export default function Exhibitions() {
 
                   <div className="exhibition-meta">
                     <span>
+                      <MapPin
+                        size={17}
+                        strokeWidth={1.8}
+                        aria-hidden="true"
+                      />
                       {exhibition.location}
                     </span>
 
                     <span>
-                      {exhibition.date}
+                      <CalendarDays
+                        size={17}
+                        strokeWidth={1.8}
+                        aria-hidden="true"
+                      />
+                      {formatExhibitionDate(
+                        exhibition.date
+                      )}
                     </span>
                   </div>
 

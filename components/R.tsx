@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "EBACE 2025",
 
-  date: "20-22 May, 2025",
+  date: "20 – 22 May 2025",
 
   location: "Palexpo Convention Centre, Geneva, Switzerland",
 

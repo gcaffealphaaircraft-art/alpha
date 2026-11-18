@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "MRO BEER",
 
-  date: "June 17–18, 2026",
+  date: "17 – 18 June 2026",
 
   location: "Istanbul, Turkey (hosted at the Istanbul Lutfi Kirdar International Convention and Exhibition Center)",
 

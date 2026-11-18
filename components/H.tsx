@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "International Paris Air Show",
 
-  date: "16-22 June, 2025",
+  date: "16 – 22 June 2025",
 
   location: "Le Bourget, Pairs",
 

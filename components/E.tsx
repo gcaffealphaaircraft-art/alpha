@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const exhibition = {
   name: "Singapore Air Show",
 
-  date: "20-25 Feb, 2024",
+  date: "20 – 25 February 2024",
 
   location: "Changi Exhibition Centre, Singapore",
 
