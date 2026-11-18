@@ -238,8 +238,8 @@ const milestones = [
   },
   {
     icon: Globe2,
-    value: "4",
-    label: "Continents Served",
+    value: "3",
+    label: "Generations Legacy",
   },
   {
     icon: Landmark,
@@ -284,7 +284,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
             <div className={styles.heroVisual}>
               <div className={styles.heroPhoto}>
                 <Image
-                  src="/Cam1.webp"
+                  src="/Alpha-Aircraft-Systems-celebrating-30-years-Header-Image.webp"
                   alt="Alpha Aircraft Systems team and partners at MRO Europe"
                   fill
                   priority
@@ -338,7 +338,7 @@ export default function ThirtyOneYearsOfAlphaPage() {
         <section className={styles.peopleSection}>
           <div className={styles.peoplePhoto}>
             <Image
-              src="/Team.webp"
+              src="/Alpha-Celebrating-30-years.png"
               alt="Alpha Aircraft Systems team with aviation partners"
               fill
               sizes="(max-width: 760px) 100vw, 48vw"
