@@ -248,7 +248,7 @@ const exhibitionData: ExhibitionYear = {
       location:
         "Bengaluru, India",
       address:
-        "Air Force Station Yelahanka, Bengaluru, Karnataka, India",
+        "Air Force Station Yelahanka, Bengaluru Karnataka, India",
       date: "9-10 September, 2025",
       description:
         "Exploring aerospace technologies and building meaningful industry connections.",
@@ -284,7 +284,7 @@ const exhibitionData: ExhibitionYear = {
       location:
         "Palexpo Convention Centre, Geneva, Switzerland",
       address:
-        "Palexpo Convention Centre, Geneva, Switzerland",
+        "Palexpo Convention Centre, Geneva Switzerland",
       date: "20–22 May 2025",
       description:
         "It was our first participation in EBACE and the aviation community gripped us. It was an awesome event. EBACE landed us to new markets and provided us valued connections.",
@@ -346,7 +346,7 @@ const exhibitionData: ExhibitionYear = {
       location:
         "Anaheim Convention Center, Anaheim, California",
       address:
-        "Anaheim Convention Center, Anaheim, California",
+        "Anaheim Convention Center, Anaheim California",
       date: "27–29 February 2024",
       description:
         "It was for the first time that we participated in a helicopter expo. HAI Heli Expo set the stage for our entry into Helicopter APU MRO services.",
@@ -498,7 +498,7 @@ const exhibitionData: ExhibitionYear = {
       location:
         "Georgia World Congress, Atlanta, Georgia, USA",
       address:
-        "Georgia World Congress, Atlanta, Georgia, USA",
+        "Georgia World Congress, Atlanta, Georgia USA",
       date: "18–20 April 2023",
       description:
         "We proudly participated in MRO Americas in Atlanta, showcasing quality APU Components and best Military Maintenance Facility of Alpha Aircraft Systems.",

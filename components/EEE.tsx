@@ -26,7 +26,7 @@ const exhibition = {
 
   date: "7 – 10 October 2026",
 
-  location: "Royal Moroccan Air Force Base, Marrakech Morocco.",
+  location: "Royal Moroccan Air Force Base, Marrakech Morocco",
 
 booth: "Booth M8",
 
