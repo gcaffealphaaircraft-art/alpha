@@ -22,6 +22,16 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-2X2N6LSQRS"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2X2N6LSQRS');`}
+        </Script>
         <Script id="zoho-salesiq-init" strategy="afterInteractive">
           {`window.$zoho = window.$zoho || {};
 window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };`}
